@@ -84,8 +84,8 @@ M.neoscroll = function()
 
 })
     require('neoscroll.config').set_mappings({
-['<C-j>'] = {'scroll', {'vim.api.nvim_win_get_height(0)', 'true', '7'}},
-['<C-k>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '7'}}
+['<C-j>'] = {'scroll', {'vim.api.nvim_win_get_height(0)', 'true', '250'}},
+['<C-k>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '250'}}
 })
    end)
 end

@@ -6,7 +6,7 @@ local wo = vim.wo
 local bo = vim.bo
 cmd "set nocompatible"
 -- plugins
-require('init').init()
+require('plugins.init').init()
 
 -- edit setting
 
