@@ -6,6 +6,12 @@ local wo = vim.wo
 local bo = vim.bo
 cmd "set nocompatible"
 -- plugins
+-- enable impatient
+local present, impatient = pcall(require, "impatient")
+
+if present then
+   impatient.enable_profile()
+end
 require('plugins.init').init()
 
 -- edit setting

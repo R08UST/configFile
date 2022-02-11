@@ -78,10 +78,10 @@ M.leadern = {
  },
     f = { -- set a nested structure
         name = '+Find',
-        f = {"<Cmd>Telescope find_files()<CR>", "files"},
-        b = {"<Cmd>Telescope buffers()<CR>", "buffers"},
-        h = {"<Cmd>Telescope help_tags()<CR>", "help tags"},
-        o = {"<Cmd>Telescope oldfiles()<CR>", "old files"},
+        f = {"<Cmd>Telescope find_files<CR>", "files"},
+        b = {"<Cmd>Telescope buffers<CR>", "buffers"},
+        h = {"<Cmd>Telescope help_tags<CR>", "help tags"},
+        o = {"<Cmd>Telescope oldfiles<CR>", "old files"},
         d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
         D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
         m = {"<cmd>Telescope marks<cr>", "Marks"},
@@ -89,12 +89,14 @@ M.leadern = {
         R = {"<cmd>Telescope registers<cr>", "Registers"},
         t = {"<cmd>Telescope live_grep<cr>", "Text"},
         q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
+        s = {"<cmd>Telescope symbol<cr>", "Quickfix"},
+        B = {"<cmd>Telescope bibtex<cr>", "Quickfix"},
         x = {"<cmd>cclose<cr>", "Close Quickfix"},
         n = {"<cmd>DashboardNewFile<CR>", "new file"},
         c = {
                 name = "+C",
-                s = {"<Cmd>Telescope colorscheme()<CR>", "colorscheme"},
-                h = {"<Cmd>Telescope command_history()<CR>", "command history"},
+                s = {"<Cmd>Telescope colorscheme<CR>", "colorscheme"},
+                h = {"<Cmd>Telescope command_history<CR>", "command history"},
 		c = {"<Cmd>Cheatsheet<CR>", "Cheatsheet"},
             },
         g = {
@@ -104,12 +106,12 @@ M.leadern = {
             b = {'<Cmd>Telescope git_branches<CR>', 'branches'},
             s = {'<Cmd>Telescope git_status<CR>', 'status'},
             },
-        s = {
+        S = {
             name = '+spectre',
-            s = {"<Cmd>lua require('spectre').open()<CR>", 'open spectre'},
-            w = {"<Cmd>viw:lua require('spectre').open_visual()<CR>", 'search world'},
-            v = {"<Cmd>:lua require('spectre').open_visual()<CR>", 'search selected'},
-            f = {"<Cmd>viw:lua require('spectre').open_file_search()<cr>", 'search current file'},
+            s = {"<Cmd>Spectre open<CR>", 'open spectre'},
+            w = {"<Cmd>Spectre open_visual<CR>", 'search world'},
+            v = {"<Cmd>Spectre open_visual<CR>", 'search selected'},
+            f = {"<Cmd>Spectre open_file_search<cr>", 'search current file'},
             },
 	},
     b = {
@@ -188,10 +190,6 @@ M.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
-   },
-   chadsheet = {
-      default_keys = "<leader>dk",
-      user_keys = "<leader>uk",
    },
    comment = {
       toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix

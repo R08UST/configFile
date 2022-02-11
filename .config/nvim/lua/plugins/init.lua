@@ -1,8 +1,5 @@
-local M = {} local cmd = vim.cmd
-local g = vim.g
+local M = {} 
 local o = vim.o
-local map = vim.api.nvim_set_keymap
-local CONFIG_PATH = vim.fn.stdpath('config')
 -- plugin setting
 M.init = function()
 o.packpath = vim.fn.stdpath('config')
@@ -42,12 +39,14 @@ packer.startup{function()
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim" 
     use "rktjmp/lush.nvim"
+    use "lewis6991/impatient.nvim"
+    use "nathom/filetype.nvim"
 
     use {
 	"wbthomason/packer.nvim",
 	event = "VimEnter",
    }
-
+-- beautify
     use {
       "kyazdani42/nvim-web-devicons",
       config = function()
@@ -75,7 +74,6 @@ packer.startup{function()
 	"numtostr/BufOnly.nvim",
         cmd= "BufOnly"
     }
-
 
     use {
       "lukas-reineke/indent-blankline.nvim",
@@ -122,7 +120,7 @@ packer.startup{function()
    }
 
    -- smooth scroll
-   use {
+    use {
       "karb94/neoscroll.nvim",
       opt = true,
       config = function()
@@ -135,7 +133,7 @@ packer.startup{function()
 
    -- lsp stuff
 
-	    use{
+    use{
 	'williamboman/nvim-lsp-installer',
 	opt = true,
 	setup = function()
@@ -146,7 +144,7 @@ packer.startup{function()
 	      end,
 	    }
 
-   use {
+    use {
       "neovim/nvim-lspconfig",
       after = 'nvim-lsp-installer',
       config = function()
@@ -167,14 +165,6 @@ packer.startup{function()
       after = "nvim-lspconfig",
       config = function()
          require("plugins.configs.others").signature()
-      end,
-   }
-
-   use {
-      "andymass/vim-matchup",
-      opt = true,
-      setup = function()
-         require("utils").packer_lazy_load "vim-matchup"
       end,
    }
 
@@ -233,6 +223,24 @@ packer.startup{function()
    }
 
    -- misc plugins
+   
+   use {
+      "andymass/vim-matchup",
+      opt = true,
+      setup = function()
+         require("utils").packer_lazy_load "vim-matchup"
+      end,
+   }
+
+   -- funny but useless for now
+   -- use {
+   --    "rcarriga/nvim-notify",
+   --    after = "nvim-cmp",
+   --    config = function()
+   --       require("plugins.configs.others").notify()
+   --    end,
+   -- }
+
    use {
       "windwp/nvim-autopairs",
       after = "nvim-cmp",
@@ -301,19 +309,23 @@ packer.startup{function()
       module = "cheatsheet",
       requires = {
          {
-            "sudormrfbin/cheatsheet.nvim",
-            after = "telescope.nvim",
-            config = function()
-               require "plugins.configs.chadsheet"
-            end,
-         },
-         {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",
          },
 	{
          'nvim-telescope/telescope-dap.nvim',
          after = { 'telescope.nvim', 'nvim-dap' },
+	},
+	{
+	    'nvim-telescope/telescope-symbols.nvim',
+	    after = 'telescope.nvim',
+	},
+	{
+	    'nvim-telescope/telescope-bibtex.nvim',
+	    after = 'telescope.nvim',
+	    config = function ()
+		require"telescope".load_extension("bibtex")
+	    end,
 	},
     },
 
@@ -364,7 +376,7 @@ config = {
   package_root = o.packpath .. '/pack',
   display = {
       open_fn = function()
-         return require("packer.util").float { border = "single" }
+         return require("packer.util").float{ border = "single" }
       end,
       prompt_border = "single",
    },
@@ -373,6 +385,7 @@ config = {
    },
    auto_clean = true,
    compile_on_sync = true,
+   compile_path = o.packpath .. '/lua/packer_compiled.lua'
 }
 }
 end
