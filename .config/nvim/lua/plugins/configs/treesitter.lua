@@ -4,14 +4,11 @@ if not present then
 end
 
 ts_config.setup {
-
     ensure_installed = {
         "bash",
         "lua",
         "json",
         "python",
-        "cpp",
-        --   "rust",
     },
     autopairs = {enable = true},
     matchup = {enable = true},

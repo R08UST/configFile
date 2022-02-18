@@ -1,103 +1,102 @@
 local M = {} 
 local o = vim.o
 -- plugin setting
-M.init = function()
-o.packpath = vim.fn.stdpath('config')
-o.runtimepath = vim.fn.stdpath('config') .. '/pack/packer' .. ',' .. o.runtimepath
+M.load = function()
+    o.packpath = vim.fn.stdpath('config')
+    o.runtimepath = vim.fn.stdpath('config') .. '/pack/packer' .. ',' .. o.runtimepath
 
-vim.cmd "packadd packer.nvim"
-local present, packer = pcall(require, "packer")
+    vim.cmd "packadd packer.nvim"
+    local present, packer = pcall(require, "packer")
 
--- install packer
-if not present then
-   local installpath =  o.packpath .. "/pack/packer/opt/packer.nvim"
+    -- install packer
+    if not present then
+	local installpath =  o.packpath .. "/pack/packer/opt/packer.nvim"
 
-   print "Cloning packer.."
-   -- remove the dir before cloning
-   vim.fn.delete(installpath, "rf")
-   vim.fn.system {
-      "git",
-      "clone",
-      "https://github.com/wbthomason/packer.nvim",
-      "--depth",
-      "20",
-      installpath,
-   }
+	print "Cloning packer.."
+	-- remove the dir before cloning
+	vim.fn.delete(installpath, "rf")
+	vim.fn.system {
+	    "git",
+	    "clone",
+	    "https://github.com/wbthomason/packer.nvim",
+	    "--depth",
+	    "20",
+	    installpath,
+	}
 
-   vim.cmd "packadd packer.nvim"
-   present, packer = pcall(require, "packer")
+	vim.cmd "packadd packer.nvim"
+	present, packer = pcall(require, "packer")
 
-   if present then
-      print "Packer installed."
-   else
-      error("Couldn't install packer !\nPacker path: " .. installpath .. "\n" .. packer)
-   end
-end
+	if present then
+	    print "Packer installed."
+	else
+	    error("Couldn't install packer !\nPacker path: " .. installpath .. "\n" .. packer)
+	end
+    end
 
-packer.startup{function()
+    packer.startup{function()
+	use "nvim-lua/plenary.nvim"
+	use "nvim-lua/popup.nvim" 
+	use "rktjmp/lush.nvim"
+	use "lewis6991/impatient.nvim"
+	use "nathom/filetype.nvim"
 
-    use "nvim-lua/plenary.nvim"
-    use "nvim-lua/popup.nvim" 
-    use "rktjmp/lush.nvim"
-    use "lewis6991/impatient.nvim"
-    use "nathom/filetype.nvim"
+	use {
+	    "wbthomason/packer.nvim",
+	    event = "VimEnter",
+	}
+	-- beautify
+	use {
+	    "kyazdani42/nvim-web-devicons",
+	    config = function()
+		require "plugins.configs.icons"
+	    end,
+	    }
 
-    use {
-	"wbthomason/packer.nvim",
-	event = "VimEnter",
-   }
--- beautify
-    use {
-      "kyazdani42/nvim-web-devicons",
-      config = function()
-         require "plugins.configs.icons"
-      end,
-   }
+	use {
+	    "famiu/feline.nvim",
+	    after = "nvim-web-devicons",
+	    config = function()
+		require "plugins.configs.statusline"
+	    end,
+	    }
 
-    use {
-      "famiu/feline.nvim",
-      after = "nvim-web-devicons",
-      config = function()
-         require "plugins.configs.statusline"
-      end,
-   }
-
-    use {
-      "akinsho/bufferline.nvim",
-      after = "nvim-web-devicons",
-      config = function()
-         require "plugins.configs.bufferline"
-      end,
-   }
+	use {
+	    "akinsho/bufferline.nvim",
+	    after = "nvim-web-devicons",
+	    config = function()
+		require "plugins.configs.bufferline"
+	    end,
+	    }
     
-    use {
-	"numtostr/BufOnly.nvim",
-        cmd= "BufOnly"
-    }
+	use {
+	    "numtostr/BufOnly.nvim",
+	    cmd= "BufOnly"
+	    }
 
-    use {
-      "lukas-reineke/indent-blankline.nvim",
-      event = "BufRead",
-      config = function()
-         require("plugins.configs.others").blankline()
-      end,
-   }
+        use {
+	    "lukas-reineke/indent-blankline.nvim",
+	    event = "BufRead",
+	    config = function()
+		require("plugins.configs.others").blankline()
+	    end,
+	    }
 
-    use {
-	"norcalli/nvim-colorizer.lua",
-	event = "BufRead",
-	config = function()
-	    require("plugins.configs.others").colorizer()
-	end,
-   }
+	use {
+	    "norcalli/nvim-colorizer.lua",
+	    event = "BufRead",
+	    config = function()
+		require("plugins.configs.others").colorizer()
+	    end,
+	}
 
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      event = "BufRead",
-      config = function()
-         require "plugins.configs.treesitter"
-      end,
-   }
+	use {
+	    "nvim-treesitter/nvim-treesitter",
+	    event = "BufRead",
+	    config = function()
+		require "plugins.configs.treesitter"
+	    end,
+	}
 
     use {
       "p00f/nvim-ts-rainbow",
@@ -233,13 +232,13 @@ packer.startup{function()
    }
 
    -- funny but useless for now
-   -- use {
-   --    "rcarriga/nvim-notify",
-   --    after = "nvim-cmp",
-   --    config = function()
-   --       require("plugins.configs.others").notify()
-   --    end,
-   -- }
+    use {
+	"rcarriga/nvim-notify",
+	after = "nvim-cmp",
+	config = function()
+	    require("plugins.configs.others").notify()
+	end,
+        }
 
    use {
       "windwp/nvim-autopairs",
@@ -273,11 +272,6 @@ packer.startup{function()
         cmd = "StartupTime"
     }
 
-    use {'iamcco/markdown-preview.nvim',
-        run = 'cd app && yarn install',
-        cmd = 'MarkdownPreview'
-    }
-
     use {'windwp/nvim-spectre',
         cmd = "Spectre"
     }
@@ -291,6 +285,20 @@ packer.startup{function()
       config = function()
          require("plugins.configs.others").comment()
       end,
+   }
+    -- md, latex and notetaking
+    use {'iamcco/markdown-preview.nvim',
+        run = 'cd app && yarn install',
+        cmd = 'MarkdownPreview'
+    }
+
+    use {
+        'jakewvincent/mkdnflow.nvim',
+	cmd = 'Mkdnflow',
+	ft = {'md', 'rmd', 'markdown'},
+	config = function()
+	    require("plugins.configs.markdown").mkdnflow()
+	end,
    }
 
    -- file managing , picker etc
@@ -306,7 +314,6 @@ packer.startup{function()
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
       -- because cheatsheet is not activated by a teleacope command
-      module = "cheatsheet",
       requires = {
          {
             "nvim-telescope/telescope-fzf-native.nvim",
@@ -384,8 +391,7 @@ config = {
       clone_timeout = 6000, -- seconds
    },
    auto_clean = true,
-   compile_on_sync = true,
-   compile_path = o.packpath .. '/lua/packer_compiled.lua'
+   compil_on_sync = true,
 }
 }
 end
