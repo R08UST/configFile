@@ -97,17 +97,11 @@ vim.notify = function(msg, log_level, _opts)
 end
 
 lsp_installer.on_server_ready(function(server)
-    local opts = {
-	on_attach = on_attach,
-	root_dir = function(startpath)
-	 	return vim.fn.getcwd()
-	     end
-    }
+    local opts = {}
 
     -- (optional) Customize the options passed to the server
-    -- if server.name == "pyright" then
-    --    opts.root_dir = function() 
-    --	end
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
     -- end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
