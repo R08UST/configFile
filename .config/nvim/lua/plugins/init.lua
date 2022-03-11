@@ -40,7 +40,13 @@ M.load = function()
 	use "rktjmp/lush.nvim"
 	use "lewis6991/impatient.nvim"
 	use "nathom/filetype.nvim"
-
+   -- funny but useless for now
+	use {
+	    "rcarriga/nvim-notify",
+	    config = function()
+		require("plugins.configs.others").notify()
+	    end,
+	}
 	use {
 	    "wbthomason/packer.nvim",
 	    event = "VimEnter",
@@ -167,6 +173,15 @@ M.load = function()
       end,
    }
 
+use {
+    'stevearc/aerial.nvim',
+    after = "nvim-lspconfig",
+    config = function()
+	require("plugins.configs.others").aerial()
+    end
+    --cmd = "AerialToggle!"
+}
+
    -- load luasnips + cmp related in insert mode only
 
    use {
@@ -231,15 +246,6 @@ M.load = function()
       end,
    }
 
-   -- funny but useless for now
-    use {
-	"rcarriga/nvim-notify",
-	after = "nvim-cmp",
-	config = function()
-	    require("plugins.configs.others").notify()
-	end,
-        }
-
    use {
       "windwp/nvim-autopairs",
       after = "nvim-cmp",
@@ -289,7 +295,9 @@ M.load = function()
     -- md, latex and notetaking
     use {'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
-        cmd = 'MarkdownPreview'
+	config = function()
+	    vim.g.mkdp_browser = 'msedge.exe'
+	end,
     }
 
     use {

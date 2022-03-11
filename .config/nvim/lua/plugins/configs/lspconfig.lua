@@ -5,42 +5,22 @@ if not (present1 or present2) then
    return
 end
 
-local function on_attach(_, bufnr)
-   local function buf_set_keymap(...)
-      vim.api.nvim_buf_set_keymap(bufnr, ...)
-   end
-   local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-   end
+local function onAttach(client, bufnr)
+    local function buf_set_option(...)
+	vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+    -- attach aerial and signature
+    require("aerial").on_attach(client, bufnr)
+    require("lsp_signature").on_attach()
 
-   -- Enable completion triggered by <c-x><c-o>
-   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-   -- Mappings.
-   -- local opts = { noremap = true, silent = true }
-
-   -- See `:help vim.lsp.*` for documentation on any of the below functions
-   -- buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-   -- buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-   -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-   -- buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-   -- buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-   -- buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-   -- buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-   -- buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-   -- buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-   -- buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-   -- buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-   -- buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-   -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-   -- buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-   -- buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-   -- buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-   -- buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-   -- buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    -- Enable completion triggered by <c-x><c-o>
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
@@ -56,17 +36,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
       "additionalTextEdits",
    },
 }
-
-
--- replace the default lsp diagnostic symbols
-local function lspSymbol(name, icon)
-   vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefaul" .. name })
-end
-
-lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-lspSymbol("Warning", "")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
    virtual_text = {
@@ -84,30 +53,26 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
    border = "single",
 })
 
--- suppress error messages from lang servers
-vim.notify = function(msg, log_level, _opts)
-   if msg:match "exit code" then
-      return
-   end
-   if log_level == vim.log.levels.ERROR then
-      vim.api.nvim_err_writeln(msg)
-   else
-      vim.api.nvim_echo({ { msg } }, true, {})
-   end
+-- local servers = lsp_installer.get_installed_servers()
+
+local servers = {'pyright', 'zk', 'bashls'}
+for _, name in pairs(servers) do
+    local server_is_found, server = lsp_installer.get_server(name)
+    if server_is_found and not server:is_installed() then
+	vim.notify("Installing " .. name)
+	server:install()
+    end
+    if server:is_installed() then
+	require('lspconfig')[name].setup {
+	    on_attach = onAttach,
+	    root_dir = function()
+		return vim.fn.getcwd()
+	    end,
+	    flags = {
+	    -- This will be the default in neovim 0.7+
+	    debounce_text_changes = 150,
+	    }
+	}
+    end
 end
-
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
-
-
 

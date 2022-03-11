@@ -5,10 +5,6 @@ end
 
 ts_config.setup {
     ensure_installed = {
-        "bash",
-        "lua",
-        "json",
-        "python",
     },
     autopairs = {enable = true},
     matchup = {enable = true},

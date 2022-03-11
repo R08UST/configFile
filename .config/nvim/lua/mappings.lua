@@ -27,11 +27,11 @@ M.key = function()
     --lsp 
     map("n", "<C-f>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
     map("n", "<C-b>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
-   map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-   map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-   map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-   map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-   map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
    -- map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
    -- map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
    -- map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
@@ -42,9 +42,9 @@ M.key = function()
    -- map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
    -- map("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
    -- map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-   map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-   map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-   map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 -- whichkey leader
 M.leaderv = {
@@ -78,6 +78,7 @@ M.leadern = {
  },
     f = { -- set a nested structure
         name = '+Find',
+	a = {"lua require('aerial').toggle()<CR>", 'symbol'},
         f = {"<Cmd>Telescope find_files<CR>", "files"},
         b = {"<Cmd>Telescope buffers<CR>", "buffers"},
         h = {"<Cmd>Telescope help_tags<CR>", "help tags"},
