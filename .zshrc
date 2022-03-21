@@ -106,3 +106,4 @@ alias python=python3
 alias pip=pip3
 alias nvim=~/nvim-linux64/bin/nvim
 alias vim=~/nvim-linux64/bin/nvim
+export PATH=$PATH:~/.local/share/nvim/lsp_servers/zk

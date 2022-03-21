@@ -78,7 +78,7 @@ M.leadern = {
  },
     f = { -- set a nested structure
         name = '+Find',
-	a = {"lua require('aerial').toggle()<CR>", 'symbol'},
+	a = {"<Cmd>lua require('aerial').toggle()<CR>", 'symbol'},
         f = {"<Cmd>Telescope find_files<CR>", "files"},
         b = {"<Cmd>Telescope buffers<CR>", "buffers"},
         h = {"<Cmd>Telescope help_tags<CR>", "help tags"},
