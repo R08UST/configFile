@@ -31,6 +31,7 @@ o.lazyredraw = true
 o.swapfile = false
 o.backup = false
 o.writebackup = false
+g.did_load_filetypes = 1
 
 require("mappings").key()
 

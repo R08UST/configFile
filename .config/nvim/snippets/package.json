@@ -1,0 +1,23 @@
+{
+    "name": "Snip",
+    "displayName": "Useful Snippets",
+    "description": "Useful Snippets By R08UST",
+    "version": "0.0.1",
+    "publisher": "R08UST",
+    "engines": {
+	"vscode": "^1.5.1"
+    },
+    "categories": [
+	"Snippets"
+    ],
+    "contributes": {
+	"snippets": [
+	    {
+		"language": [
+		    "math"
+		],
+		"path": "./math.json"
+	    }		
+	]
+    }
+}

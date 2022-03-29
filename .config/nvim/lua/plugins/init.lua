@@ -180,7 +180,7 @@ M.load = function()
 	    'stevearc/aerial.nvim',
 	    after = "nvim-lspconfig",
 	    config = function()
-		require("plugins.configs.others").aerial()
+		require "plugins.configs.aerial"
 	    end
 	    --cmd = "AerialToggle!"
         }
@@ -200,10 +200,10 @@ M.load = function()
 	    wants = "friendly-snippets",
 	    after = "nvim-cmp",
 	    config = function()
-		require("plugins.configs.others").luasnip()
+		require "plugins.configs.snip"
 	    end,
 	}
-
+	
         use {
 	    "saadparwaiz1/cmp_luasnip",
 	    after = "LuaSnip",
@@ -216,12 +216,12 @@ M.load = function()
 
         use {
 	    "hrsh7th/cmp-nvim-lsp",
-	    after = "cmp-nvim",
+	    after = "nvim-cmp",
         }
 
 	use {
 	    "hrsh7th/cmp-buffer",
-	    after = "cmp-nvim",
+	    after = "nvim-cmp",
         }
 
 	use {
@@ -231,15 +231,22 @@ M.load = function()
 
 	use {
 	    "hrsh7th/cmp-path",
-	    after = "cmp-nvim",
+	    after = "nvim-cmp",
         }
 
 	use {
 	    "hrsh7th/cmp-cmdline",
-	    after = "cmp-nvim",
+	    after = "nvim-cmp",
         }
 
    -- misc plugins
+	use {
+	    "ggandor/lightspeed.nvim",
+	    event = "BufRead",
+	    config = function()
+		require("plugins.configs.others").lightspeed()
+	    end
+	}
         use {
             "antoinemadec/FixCursorHold.nvim",
             event = "BufRead",
@@ -305,21 +312,13 @@ M.load = function()
 	    end,
 	}
         -- md, latex and notetaking
-        use {'iamcco/markdown-preview.nvim',
+        use {
+	    'iamcco/markdown-preview.nvim',
             run = 'cd app && yarn install',
 	    config = function()
 		vim.g.mkdp_browser = 'msedge.exe'
 	    end,
         }
-
-        use {
-            'jakewvincent/mkdnflow.nvim',
-	    cmd = 'Mkdnflow',
-	    ft = {'md', 'rmd', 'markdown'},
-	    config = function()
-	        require("plugins.configs.markdown").mkdnflow()
-	    end,
-	}
 
 	-- file managing , picker etc
 	use {

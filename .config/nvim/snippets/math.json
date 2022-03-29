@@ -1,0 +1,676 @@
+{
+  "...": {
+    "prefix": "...",
+    "description": "ldots",
+    "body": [
+      "\\ldots"
+    ]
+  },
+  "=>": {
+    "prefix": "=>",
+    "description": "implies",
+    "body": [
+      "\\implies"
+    ]
+  },
+  "=<": {
+    "prefix": "=<",
+    "description": "implied by",
+    "body": [
+      "\\impliedby"
+    ]
+  },
+  "iff": {
+    "prefix": "iff",
+    "description": "iff",
+    "body": [
+      "\\iff"
+    ]
+  },
+  "dm": {
+    "prefix": "dm",
+    "description": "Math",
+    "body": [
+      "\\[",
+      "${1:${TM_SELECTED_TEXT}}",
+      ".\\] $0"
+    ]
+  },
+  "ali": {
+    "prefix": "ali",
+    "description": "Align",
+    "body": [
+      "\\begin{align*}",
+      "\t${1:${TM_SELECTED_TEXT}}",
+      ".\\end{align*}"
+    ]
+  },
+  "//": {
+    "prefix": "//",
+    "description": "Fraction",
+    "body": [
+      "\\\\frac{$1}{$2}$0"
+    ]
+  },
+  "/": {
+    "prefix": "/",
+    "description": "Fraction",
+    "body": [
+      "\\\\frac{${TM_SELECTED_TEXT}}{$1}$0"
+    ]
+  },
+  "sympy": {
+    "prefix": "sympy",
+    "description": "sympyblock",
+    "body": [
+      "sympy $1 sympy$0"
+    ]
+  },
+  "math": {
+    "prefix": "math",
+    "description": "mathematicablock",
+    "body": [
+      "math $1 math$0"
+    ]
+  },
+  "==": {
+    "prefix": "==",
+    "description": "equals",
+    "body": [
+      "&= $1 \\\\\\\\"
+    ]
+  },
+  "!=": {
+    "prefix": "!=",
+    "description": "equals",
+    "body": [
+      "\\neq "
+    ]
+  },
+  "ceil": {
+    "prefix": "ceil",
+    "description": "ceil",
+    "body": [
+      "\\left\\lceil $1 \\right\\rceil $0"
+    ]
+  },
+  "floor": {
+    "prefix": "floor",
+    "description": "floor",
+    "body": [
+      "\\left\\lfloor $1 \\right\\rfloor$0"
+    ]
+  },
+  "pmat": {
+    "prefix": "pmat",
+    "description": "pmat",
+    "body": [
+      "\\begin{pmatrix} $1 \\end{pmatrix} $0"
+    ]
+  },
+  "bmat": {
+    "prefix": "bmat",
+    "description": "bmat",
+    "body": [
+      "\\begin{bmatrix} $1 \\end{bmatrix} $0"
+    ]
+  },
+  "()": {
+    "prefix": "()",
+    "description": "left( right)",
+    "body": [
+      "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
+    ]
+  },
+  "lr": {
+    "prefix": "lr",
+    "description": "left( right)",
+    "body": [
+      "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
+    ]
+  },
+  "lr(": {
+    "prefix": "lr(",
+    "description": "left( right)",
+    "body": [
+      "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
+    ]
+  },
+  "lr|": {
+    "prefix": "lr|",
+    "description": "left| right|",
+    "body": [
+      "\\left| ${1:${TM_SELECTED_TEXT}} \\right| $0"
+    ]
+  },
+  "lr{": {
+    "prefix": "lr{",
+    "description": "left\\{ right\\}",
+    "body": [
+      "\\left\\\\{ ${1:${TM_SELECTED_TEXT}} \\right\\\\} $0"
+    ]
+  },
+  "lrb": {
+    "prefix": "lrb",
+    "description": "left\\{ right\\}",
+    "body": [
+      "\\left\\\\{ ${1:${TM_SELECTED_TEXT}} \\right\\\\} $0"
+    ]
+  },
+  "lr[": {
+    "prefix": "lr[",
+    "description": "left[ right]",
+    "body": [
+      "\\left[ ${1:${TM_SELECTED_TEXT}} \\right] $0"
+    ]
+  },
+  "lra": {
+    "prefix": "lra",
+    "description": "leftangle rightangle",
+    "body": [
+      "\\left<${1:${TM_SELECTED_TEXT}} \\right>$0"
+    ]
+  },
+  "conj": {
+    "prefix": "conj",
+    "description": "conjugate",
+    "body": [
+      "\\overline{$1}$0"
+    ]
+  },
+  "sum": {
+    "prefix": "sum",
+    "description": "sum",
+    "body": [
+      "\\sum_{n=${1:1}}^{${2:\\infty}} ${3:a_n z^n}"
+    ]
+  },
+  "taylor": {
+    "prefix": "taylor",
+    "description": "taylor",
+    "body": [
+      "\\sum_{${1:k}=${2:0}}^{${3:\\infty}} ${4:c_$1} (x-a)^$1 $0"
+    ]
+  },
+  "lim": {
+    "prefix": "lim",
+    "description": "limit",
+    "body": [
+      "\\lim_{${1:n} \\to ${2:\\infty}} "
+    ]
+  },
+  "limsup": {
+    "prefix": "limsup",
+    "description": "limsup",
+    "body": [
+      "\\limsup_{${1:n} \\to ${2:\\infty}} "
+    ]
+  },
+  "prod": {
+    "prefix": "prod",
+    "description": "product",
+    "body": [
+      "\\prod_{${1:n=${2:1}}}^{${3:\\infty}} ${4:${TM_SELECTED_TEXT}} $0"
+    ]
+  },
+  "part": {
+    "prefix": "part",
+    "description": "d/dx",
+    "body": [
+      "\\frac{\\partial ${1:V}}{\\partial ${2:x}} $0"
+    ]
+  },
+  "sq": {
+    "prefix": "sq",
+    "description": "\\sqrt{}",
+    "body": [
+      "\\sqrt{${1:${TM_SELECTED_TEXT}}} $0"
+    ]
+  },
+  "sr": {
+    "prefix": "sr",
+    "description": "^2",
+    "body": [
+      "^2"
+    ]
+  },
+  "cb": {
+    "prefix": "cb",
+    "description": "^3",
+    "body": [
+      "^3"
+    ]
+  },
+  "td": {
+    "prefix": "td",
+    "description": "to the ... power",
+    "body": [
+      "^{$1}$0"
+    ]
+  },
+  "rd": {
+    "prefix": "rd",
+    "description": "to the ... power",
+    "body": [
+      "^{($1)}$0"
+    ]
+  },
+  "__": {
+    "prefix": "__",
+    "description": "subscript",
+    "body": [
+      "_{$1}$0"
+    ]
+  },
+  "inf": {
+    "prefix": "inf",
+    "description": "\\infty",
+    "body": [
+      "\\infty"
+    ]
+  },
+  "rij": {
+    "prefix": "rij",
+    "description": "mrij",
+    "body": [
+      "(${1:x}_${2:n})_{${3:$2}\\\\in${4:\\\\N}}$0"
+    ]
+  },
+  "<=": {
+    "prefix": "<=",
+    "description": "leq",
+    "body": [
+      "\\le "
+    ]
+  },
+  ">=": {
+    "prefix": ">=",
+    "description": "geq",
+    "body": [
+      "\\ge "
+    ]
+  },
+  "EE": {
+    "prefix": "EE",
+    "description": "geq",
+    "body": [
+      "\\exists "
+    ]
+  },
+  "AA": {
+    "prefix": "AA",
+    "description": "forall",
+    "body": [
+      "\\forall "
+    ]
+  },
+  "xnn": {
+    "prefix": "xnn",
+    "description": "xn",
+    "body": [
+      "x_{n}"
+    ]
+  },
+  "ynn": {
+    "prefix": "ynn",
+    "description": "yn",
+    "body": [
+      "y_{n}"
+    ]
+  },
+  "xii": {
+    "prefix": "xii",
+    "description": "xi",
+    "body": [
+      "x_{i}"
+    ]
+  },
+  "yii": {
+    "prefix": "yii",
+    "description": "yi",
+    "body": [
+      "y_{i}"
+    ]
+  },
+  "xjj": {
+    "prefix": "xjj",
+    "description": "xj",
+    "body": [
+      "x_{j}"
+    ]
+  },
+  "yjj": {
+    "prefix": "yjj",
+    "description": "yj",
+    "body": [
+      "y_{j}"
+    ]
+  },
+  "xp1": {
+    "prefix": "xp1",
+    "description": "x",
+    "body": [
+      "x_{n+1}"
+    ]
+  },
+  "xmm": {
+    "prefix": "xmm",
+    "description": "x",
+    "body": [
+      "x_{m}"
+    ]
+  },
+  "R0+": {
+    "prefix": "R0+",
+    "description": "R0+",
+    "body": [
+      "\\\\R_0^+"
+    ]
+  },
+  "mcal": {
+    "prefix": "mcal",
+    "description": "mathcal",
+    "body": [
+      "\\mathcal{$1}$0"
+    ]
+  },
+  "lll": {
+    "prefix": "lll",
+    "description": "l",
+    "body": [
+      "\\ell"
+    ]
+  },
+  "nabl": {
+    "prefix": "nabl",
+    "description": "nabla",
+    "body": [
+      "\\nabla "
+    ]
+  },
+  "xx": {
+    "prefix": "xx",
+    "description": "cross",
+    "body": [
+      "\\times "
+    ]
+  },
+  "**": {
+    "prefix": "**",
+    "description": "cdot",
+    "body": [
+      "\\cdot "
+    ]
+  },
+  "norm": {
+    "prefix": "norm",
+    "description": "norm",
+    "body": [
+      "\\|$1\\|$0"
+    ]
+  },
+  "dint": {
+    "prefix": "dint",
+    "description": "integral",
+    "body": [
+      "\\int_{${1:-\\infty}}^{${2:\\infty}} ${3:${TM_SELECTED_TEXT}} $0"
+    ]
+  },
+  "->": {
+    "prefix": "->",
+    "description": "to",
+    "body": [
+      "\\to "
+    ]
+  },
+  "<->": {
+    "prefix": "<->",
+    "description": "leftrightarrow",
+    "body": [
+      "\\leftrightarrow"
+    ]
+  },
+  "!>": {
+    "prefix": "!>",
+    "description": "mapsto",
+    "body": [
+      "\\mapsto "
+    ]
+  },
+  "invs": {
+    "prefix": "invs",
+    "description": "inverse",
+    "body": [
+      "^{-1}"
+    ]
+  },
+  "compl": {
+    "prefix": "compl",
+    "description": "complement",
+    "body": [
+      "^{c}"
+    ]
+  },
+  "\\\\\\": {
+    "prefix": "\\\\\\",
+    "description": "setminus",
+    "body": [
+      "\\setminus"
+    ]
+  },
+  ">>": {
+    "prefix": ">>",
+    "description": ">>",
+    "body": [
+      "\\gg"
+    ]
+  },
+  "<<": {
+    "prefix": "<<",
+    "description": "<<",
+    "body": [
+      "\\ll"
+    ]
+  },
+  "~~": {
+    "prefix": "~~",
+    "description": "~",
+    "body": [
+      "\\sim "
+    ]
+  },
+  "set": {
+    "prefix": "set",
+    "description": "set",
+    "body": [
+      "\\\\{$1\\\\} $0"
+    ]
+  },
+  "||": {
+    "prefix": "||",
+    "description": "mid",
+    "body": [
+      " \\mid "
+    ]
+  },
+  "cc": {
+    "prefix": "cc",
+    "description": "subset",
+    "body": [
+      "\\subset "
+    ]
+  },
+  "notin": {
+    "prefix": "notin",
+    "description": "not in",
+    "body": [
+      "\\not\\in "
+    ]
+  },
+  "inn": {
+    "prefix": "inn",
+    "description": "in",
+    "body": [
+      "\\in "
+    ]
+  },
+  "NN": {
+    "prefix": "NN",
+    "description": "n",
+    "body": [
+      "\\N"
+    ]
+  },
+  "Nn": {
+    "prefix": "Nn",
+    "description": "cap",
+    "body": [
+      "\\cap "
+    ]
+  },
+  "UU": {
+    "prefix": "UU",
+    "description": "cup",
+    "body": [
+      "\\cup "
+    ]
+  },
+  "uuu": {
+    "prefix": "uuu",
+    "description": "bigcup",
+    "body": [
+      "\\bigcup_{${1:i \\in ${2: I}}} $0"
+    ]
+  },
+  "nnn": {
+    "prefix": "nnn",
+    "description": "bigcap",
+    "body": [
+      "\\bigcap_{${1:i \\in ${2: I}}} $0"
+    ]
+  },
+  "OO": {
+    "prefix": "OO",
+    "description": "emptyset",
+    "body": [
+      "\\O"
+    ]
+  },
+  "RR": {
+    "prefix": "RR",
+    "description": "real",
+    "body": [
+      "\\R"
+    ]
+  },
+  "QQ": {
+    "prefix": "QQ",
+    "description": "Q",
+    "body": [
+      "\\Q"
+    ]
+  },
+  "ZZ": {
+    "prefix": "ZZ",
+    "description": "Z",
+    "body": [
+      "\\Z"
+    ]
+  },
+  "<!": {
+    "prefix": "<!",
+    "description": "normal",
+    "body": [
+      "\\triangleleft "
+    ]
+  },
+  "<>": {
+    "prefix": "<>",
+    "description": "hokje",
+    "body": [
+      "\\diamond "
+    ]
+  },
+  "'(?<!i)sts'": {
+    "prefix": "'(?<!i)sts'",
+    "description": "text subscript",
+    "body": [
+      "_\\text{$1} $0"
+    ]
+  },
+  "tt": {
+    "prefix": "tt",
+    "description": "text",
+    "body": [
+      "\\text{$1}$0"
+    ]
+  },
+  "case": {
+    "prefix": "case",
+    "description": "cases",
+    "body": [
+      "\\begin{cases}",
+      "\t$1",
+      "\\end{cases}"
+    ]
+  },
+  "SI": {
+    "prefix": "SI",
+    "description": "SI",
+    "body": [
+      "\\SI{$1}{$2}"
+    ]
+  },
+  "bigfun": {
+    "prefix": "bigfun",
+    "description": "Big function",
+    "body": [
+      "\\begin{align*}",
+      "\t$1: $2 &\\longrightarrow $3 \\\\\\\\",
+      "\t$4 &\\longmapsto $1($4) = $0",
+      ".\\end{align*}"
+    ]
+  },
+  "cvec": {
+    "prefix": "cvec",
+    "description": "column vector",
+    "body": [
+      "\\begin{pmatrix} ${1:x}_${2:1}\\\\\\\\ \\vdots\\\\\\\\ $1_${2:n} \\end{pmatrix}"
+    ]
+  },
+  "\"bar\"": {
+    "prefix": "\"bar\"",
+    "description": "bar",
+    "body": [
+      "\\overline{$1}$0"
+    ]
+  },
+  "\"hat\"": {
+    "prefix": "\"hat\"",
+    "description": "hat",
+    "body": [
+      "\\hat{$1}$0"
+    ]
+  },
+  "letw": {
+    "prefix": "letw",
+    "description": "let omega",
+    "body": [
+      "Let $\\Omega \\subset \\C$ be open."
+    ]
+  },
+  "HH": {
+    "prefix": "HH",
+    "description": "H",
+    "body": [
+      "\\mathbb{H}"
+    ]
+  },
+  "DD": {
+    "prefix": "DD",
+    "description": "D",
+    "body": [
+      "\\mathbb{D}"
+    ]
+  }
+}
