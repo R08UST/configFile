@@ -1,0 +1,74 @@
+{
+    "bayes theorem": {
+        "prefix": "bayes",
+        "description": "bayes theorem",
+	    "body": [
+	        "P(B_i│A)=P(AB_i )/P(A) =(P(B_i)P(A│B_i)) / (\\displaystyle\\sum_j{P(B_j )P(A│B_j)})"
+	    ]
+    },
+    "binomial dist": {
+        "prefix": "binomialDist",
+        "description": "binomial distribution",
+        "body": [
+            "P(X=i)=b(i;n,p)=\\binom{n}{i}p^i(1−p)^{n−i}"
+        ]
+    },
+    "poisson dist": {
+        "prefix": "poissonDist",
+        "description": "poisson distribution",
+        "body": [
+                "P(X=i)=(e^{−\\lambda}\\lambda^i)/i!"
+            ]
+    },
+    "neg binomial": {
+        "prefix": "negBinomialDist",
+        "description": "negetive binomial distribution",
+        "body": [
+                "P(X=i)=\\binom{i+r−1}{r−1}p^r(1−p)^i" 
+            ]
+    },
+    "normal dist": {
+        "prefix": "normalDist",
+        "description": "normal distribution",
+        "body": [
+                "f(x)=(\\sqrt{2\\pi\\sigma}^{−1}e^{\\frac{−(x−\\mu)^2}{2\\sigma^2}})"
+            ]
+    },
+    "expo dist": {
+        "prefix": "expoDist",
+        "description": "exponential distribution",
+        "body": [
+                "x = \\begin{cases}",
+                "\t\t\\lambda e^{-\\lambda x} &{x > 0} \\\\\\\\",
+                "\t\t0 &{x \\le 0}",
+                "\t\\end{cases}"
+            ]
+    },
+    "weibull dist": {
+        "prefix": "weibullDist",
+        "description": "weibull distribution",
+        "body": [
+                "x = \\begin{cases}",
+                "\t\t\\lambda\\alpha x^{\\alpha-1}\\lambda e^{-\\lambda x^\\alpha} &{x > 0} \\\\\\\\",
+                "\t\t0 &{x \\le 0}",
+                "\t\\end{cases}"
+            ]
+    },
+    "uniform dist": {
+        "prefix": "uniformDist",
+        "description": "uniform distribution",
+        "body": [
+            "x = \\begin{cases}",
+            "\t\t\\frac{1}{b-a} &{a \\le x \\le b} \\\\\\",
+            "\t\t0 &\\text{less}",
+            "\t\\end{cases}"
+            ]
+    },  
+    "multinomial dist": {
+        "prefix": "multinomialDist",
+        "description": "multinomial distribution",
+        "body": [
+            "P(X_1=k_1, X_2=k_2, …, X_n=k_n)=\\displaystyle\\sum^∗\\frac{N!}{k_1 !…k_n !} x_1^{k_n}…x_n^{k_n}"  
+            ]
+    }
+}

@@ -16,8 +16,20 @@
 		"language": [
 		    "math"
 		],
-		"path": "./math.json"
-	    }		
+		"path": "./math/symbol.json"
+	    },
+	    {
+		"language": [
+		    "math"
+		],
+		"path": "./math/statistics.json"
+	    },
+	    {
+		"language": [
+		    "json"
+		],
+		"path": "./json.json"
+	    }
 	]
     }
 }

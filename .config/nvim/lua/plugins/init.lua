@@ -36,7 +36,6 @@ M.load = function()
 
     packer.startup{function()
 	use "nvim-lua/plenary.nvim"
-	use "nvim-lua/popup.nvim" 
 	-- optimizer
 	use "lewis6991/impatient.nvim"
 	use {
@@ -58,6 +57,7 @@ M.load = function()
 	    event = "VimEnter",
 	}
 	-- beautify
+	use "nvim-lua/popup.nvim" 
 	use "rktjmp/lush.nvim"
 	use {
 	    "kyazdani42/nvim-web-devicons",
@@ -65,6 +65,14 @@ M.load = function()
 		require "plugins.configs.icons"
 	    end,
 	    }
+
+	use {
+	    "norcalli/nvim-colorizer.lua",
+	    event = "BufRead",
+	    config = function()
+		require("plugins.configs.others").colorizer()
+	    end,
+	}
 
 	use {
 	    "famiu/feline.nvim",
@@ -94,14 +102,6 @@ M.load = function()
 		require("plugins.configs.others").blankline()
 	    end,
 	    }
-
-	use {
-	    "norcalli/nvim-colorizer.lua",
-	    event = "BufRead",
-	    config = function()
-		require("plugins.configs.others").colorizer()
-	    end,
-	}
 
 	use {
 	    "nvim-treesitter/nvim-treesitter",
@@ -280,6 +280,9 @@ M.load = function()
 	use {
 	    "sbdchd/neoformat",
 	    cmd = "Neoformat",
+        config = function()
+            vim.g.neoformat_try_node_exe = 1
+        end
 	}
 
         use {
@@ -308,7 +311,7 @@ M.load = function()
 	    'terrortylor/nvim-comment',
 	    cmd = "CommentToggle",
 	    config = function()
-		require("plugins.configs.others").comment()
+		    require("plugins.configs.others").comment()
 	    end,
 	}
         -- md, latex and notetaking
@@ -316,7 +319,7 @@ M.load = function()
 	    'iamcco/markdown-preview.nvim',
             run = 'cd app && yarn install',
 	    config = function()
-		vim.g.mkdp_browser = 'msedge.exe'
+		    vim.g.mkdp_browser = 'msedge.exe'
 	    end,
         }
 

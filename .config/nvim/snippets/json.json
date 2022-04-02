@@ -1,0 +1,15 @@
+{
+    "snip temp": {
+        "prefix": "snippet",
+        "description": "snippet template",
+        "body": [
+	        "\"$1\": {",
+            "\t\"prefix\": \"$2\",",
+            "\t\"description\": \"$3\",",
+            "\t\"body\": [",
+            "\t\t\t$4",
+            "\t\t]",
+            "},$0"
+        ]
+    }
+}

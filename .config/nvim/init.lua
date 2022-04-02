@@ -16,8 +16,10 @@ require('plugins.init').load()
 
 -- edit setting
 
--- cmd 'set tabstop=4'
+cmd 'set tabstop=4'
 cmd 'set shiftwidth=4'
+cmd 'set softtabstop=4'
+cmd 'set expandtab'
 o.mouse= "a"
 o.splitbelow = true
 -- o.showtabline = 2

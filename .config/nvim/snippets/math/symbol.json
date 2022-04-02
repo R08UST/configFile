@@ -123,14 +123,7 @@
     ]
   },
   "lr": {
-    "prefix": "lr",
-    "description": "left( right)",
-    "body": [
-      "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
-    ]
-  },
-  "lr(": {
-    "prefix": "lr(",
+    "prefix": ["lr", "lr()"],
     "description": "left( right)",
     "body": [
       "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
@@ -147,7 +140,7 @@
     "prefix": "lr{",
     "description": "left\\{ right\\}",
     "body": [
-      "\\left\\\\{ ${1:${TM_SELECTED_TEXT}} \\right\\\\} $0"
+      "\\left\\{ ${1:${TM_SELECTED_TEXT}} \\right\\} $0"
     ]
   },
   "lrb": {
@@ -483,7 +476,7 @@
     "prefix": "set",
     "description": "set",
     "body": [
-      "\\\\{$1\\\\} $0"
+      "\\{$1\\} $0"
     ]
   },
   "||": {
@@ -672,5 +665,12 @@
     "body": [
       "\\mathbb{D}"
     ]
+  },
+  "fx": {
+      "prefix": "fx",
+      "description": "f(x)",
+      "body": [
+              "f\\left( x \\right)"
+          ]
   }
 }
