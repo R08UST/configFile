@@ -38,6 +38,7 @@ luasnip.config.set_config({
     -- minimal increase in priority.
     ext_prio_increase = 1,
     enable_autosnippets = true,
+    store_selection_keys="<Tab>",
 })
 luasnip.filetype_set("cpp", { "c" })
 luasnip.filetype_extend("lua", { "c" })

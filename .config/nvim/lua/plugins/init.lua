@@ -308,21 +308,28 @@ M.load = function()
         }
 
         use {
-	    'terrortylor/nvim-comment',
-	    cmd = "CommentToggle",
-	    config = function()
-		    require("plugins.configs.others").comment()
-	    end,
+	        'terrortylor/nvim-comment',
+	        cmd = "CommentToggle",
+	        config = function()
+		        require("plugins.configs.others").comment()
+	        end,
 	}
         -- md, latex and notetaking
         use {
-	    'iamcco/markdown-preview.nvim',
+	        'iamcco/markdown-preview.nvim',
             run = 'cd app && yarn install',
-	    config = function()
-		    vim.g.mkdp_browser = 'msedge.exe'
-	    end,
+	        config = function()
+		        vim.g.mkdp_browser = 'msedge.exe'
+	        end,
         }
-
+        -- Thesaurus
+        use {
+            'ron89/thesaurus_query.vim',
+            ft = {'tex', 'md', 'markdown'},
+            config = function()
+                vim.g.tq_language={'en', 'cn'}
+            end,
+        }
 	-- file managing , picker etc
 	use {
 	    "kyazdani42/nvim-tree.lua",

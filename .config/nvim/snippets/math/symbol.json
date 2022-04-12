@@ -46,7 +46,7 @@
     ]
   },
   "//": {
-    "prefix": "//",
+    "prefix": ["//", "frac"],
     "description": "Fraction",
     "body": [
       "\\\\frac{$1}{$2}$0"
@@ -670,7 +670,7 @@
       "prefix": "fx",
       "description": "f(x)",
       "body": [
-              "f\\left( x \\right)"
+              "f\\left( ${1:x} \\right) $0"
           ]
   }
 }
