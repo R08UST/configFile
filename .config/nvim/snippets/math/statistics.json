@@ -70,5 +70,32 @@
         "body": [
             "P(X_1=k_1, X_2=k_2, …, X_n=k_n)=\\displaystyle\\sum^∗\\frac{N!}{k_1 !…k_n !} x_1^{k_n}…x_n^{k_n}"  
             ]
+    },
+    "multiuniform dist": {
+        "prefix": "multiuniform",
+        "description": "multiuniform distribution",
+        "body": [
+            "x = \\begin{cases}",
+            "\t\t\\frac{1}{(b-a)(d-c)} &{a \\le x_1 \\le b, c \\le x_2 \\le d} \\\\\\",
+            "\t\t0 &\\text{less}",
+            "\t\\end{cases}"
+            ]
+    },
+    "binomial uniform dist": {
+        "prefix": "biuniform",
+        "description": "binomial uniform distribution",
+        "body": [
+            "f(x_1, x_2 )=(\\sqrt{2π}\\sigma_1\\sigma_2 \\sqrt{1−\\rho^2})^{−1}\\exp[\\frac{−1}{2(1−\\rho^2 )}(\\frac{(x_1−\\alpha)^2}{\\sigma_1^2}−\\frac{2\\rho(x_1−\\alpha)(x_2−\\beta)}{\\sigma_1 \\sigma_2 }+\\frac{x_2−\\beta}{\\sigma_2^2 })]"
+            ]
+    },
+    "chi dist": {
+        "prefix": "chi2",
+        "description": "chi square distribution",
+        "body": [
+                "f_k(x) = \\begin{cases}",
+                "\t\t0 &{x < 0} \\\\\\",
+                "\t\t\\frac{1}{\\Gamma(\\frac{n}{2})2^{\\frac{n}{2}}}e^{(−x/2)}x^{\\frac{(n−2)}{2}} &{x \\ge 0}",
+                "\\end{cases}",
+            ]
     }
 }

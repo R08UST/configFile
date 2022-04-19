@@ -7,15 +7,14 @@ local M = {}
 
 M.key = function()
     g.mapleader = " "
-    map("n", "<C-S-V>", "+gp", opt)
-    map("v", "<C-S-C>", "+y", opt)
-    map("v", "<C-S-X>", "+x", opt)
+    
+    map("n", "<C-p>", "+gp", opt)
+    map("v", "<C-y>", "+y", opt)
+    map("n", "<C-S-v>", "+gp", opt)
+    map("v", "<C-S-c>", "+y", opt)
+    map("v", "<C-S-x>", "+x", opt)
     map("t", "<ESC>", "<C-\\><C-n>", opt)
     map("v", 'gv', 'y/<C-r>\"<CR>', opt)
-    
-    map("n", "w", "<Plug>WordMotion_w", opt)
-    map("n", "b", "<Plug>WordMotion_b", opt)
-    map("n", "ge", "<Plug>WordMotion_ge", opt)
     
     map("n", '<F7>', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opt)
     map("n", '<F6>', "<cmd>lua require'dap'.stop()<cr>", opt)

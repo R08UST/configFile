@@ -78,15 +78,16 @@ M.load = function()
 	    "famiu/feline.nvim",
 	    after = "nvim-web-devicons",
 	    config = function()
-		require "plugins.configs.statusline"
+		    require "plugins.configs.statusline"
 	    end,
 	    }
 
 	use {
 	    "akinsho/bufferline.nvim",
 	    after = "nvim-web-devicons",
+            tag = "*",
 	    config = function()
-		require "plugins.configs.bufferline"
+		    require "plugins.configs.bufferline"
 	    end,
 	    } 
 
