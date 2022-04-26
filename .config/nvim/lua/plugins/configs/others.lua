@@ -5,7 +5,7 @@ M.autopairs = function()
     local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
 
     if not (present1 or present2) then
-	return
+	    return
     end
 
     autopairs.setup()
@@ -45,7 +45,7 @@ end
 M.comment = function()
     local present, nvim_comment = pcall(require, "nvim_comment")
     if present then
-	nvim_comment.setup()
+	    nvim_comment.setup()
     end
 end
 
@@ -92,104 +92,53 @@ M.signature = function()
    end
 end
 
-M.saga = function()
-    local present, saga = pcall(require, "lspsaga")
-    if present then
-	saga.setup { -- defaults ...
-	    debug = false,
-            use_saga_diagnostic_sign = true,
-            -- diagnostic sign
-            error_sign = "",
-            warn_sign = "",
-            hint_sign = "",
-            infor_sign = "",
-            diagnostic_header_icon = "   ",
-            -- code action title icon
-            code_action_icon = " ",
-            code_action_prompt = {
-              enable = true,
-              sign = true,
-              sign_priority = 40,
-              virtual_text = true,
-            },
-            finder_definition_icon = "  ",
-            finder_reference_icon = "  ",
-            max_preview_lines = 10,
-            finder_action_keys = {
-              open = "o",
-              vsplit = "s",
-              split = "i",
-              quit = "q",
-              scroll_down = "<C-f>",
-              scroll_up = "<C-b>",
-            },
-            code_action_keys = {
-              quit = "q",
-              exec = "<CR>",
-            },
-            rename_action_keys = {
-              quit = "<C-c>",
-              exec = "<CR>",
-            },
-            definition_preview_icon = "  ",
-            border_style = "single",
-            rename_prompt_prefix = "➤",
-            rename_output_qflist = {
-              enable = false,
-              auto_open_qflist = false,
-            },
-            server_filetype_map = {},
-            diagnostic_prefix_format = "%d. ",
-            diagnostic_message_format = "%m %c",
-            highlight_prefix = false,
-}
-    end
-end
-
 M.notify = function()
     local present, notify = pcall(require, "notify")
     if not present then
-	return 
+	    return 
     end
-    vim.notify = notify
+
     notify.setup({
     -- Animation style (see below for details)
-    stages = "fade_in_slide_out",
-
-    -- Function called when a new window is opened, use for changing win settings/config
-    on_open = nil,
-
-    -- Function called when a window is closed
-    on_close = nil,
-
-    -- Render function for notifications. See notify-render()
-    render = "default",
-
-    -- Default timeout for notifications
-    timeout = 5000,
-
-    -- Max number of columns for messages
-    max_width = nil,
-    -- Max number of lines for a message
-    max_height = nil,
-
-    -- For stages that change opacity this is treated as the highlight behind the window
-    -- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
-    background_colour = "Normal",
-
-    -- Minimum width for notification windows
-    minimum_width = 50,
-
-    -- Icons for the different levels
-    icons = {
-	ERROR = "",
-	WARN = "",
-	INFO = "",
-	DEBUG = "",
-	TRACE = "✎",
-	},
+        stages = "fade_in_slide_out",
+    
+        -- Function called when a new window is opened, use for changing win settings/config
+        on_open = nil,
+    
+        -- Function called when a window is closed
+        on_close = nil,
+    
+        -- Render function for notifications. See notify-render()
+        render = "default",
+    
+        -- Default timeout for notifications
+        timeout = 5000,
+    
+        -- Max number of columns for messages
+        max_width = nil,
+        -- Max number of lines for a message
+        max_height = nil,
+    
+        -- For stages that change opacity this is treated as the highlight behind the window
+        -- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
+        background_colour = "Normal",
+    
+        -- Minimum width for notification windows
+        minimum_width = 50,
+    
+        -- Icons for the different levels
+        icons = {
+    	ERROR = "",
+    	WARN = "",
+    	INFO = "",
+    	DEBUG = "",
+    	TRACE = "✎",
+    	},
     })
-    end 
+
+    vim.notify = notify
+
+end 
 
 M.lightspeed = function()
     require'lightspeed'.setup {

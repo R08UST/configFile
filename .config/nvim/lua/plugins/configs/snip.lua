@@ -42,7 +42,8 @@ luasnip.config.set_config({
 })
 luasnip.filetype_set("cpp", { "c" })
 luasnip.filetype_extend("lua", { "c" })
-luasnip.filetype_extend("all", { "math" })
+luasnip.filetype_extend("markdown", { "math" })
+luasnip.filetype_extend("tex", { "math" })
 -- load friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load() 
 -- load my own snippets

@@ -24,49 +24,32 @@ M.key = function()
     map("n", '<F12>', "<cmd>lua require'dap'.step_out()<cr>", opt)
 
     --lsp 
-    map("n", "<C-f>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opt)
-    map("n", "<C-b>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opt)
     map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    map("n", "H", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-   -- map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-   -- map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-   -- map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-   -- map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-   -- map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-   -- map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-   -- map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-   -- map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-   -- map("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-   -- map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
     map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 -- whichkey leader
 M.leaderv = {
 
-    w = {':w!<CR>', 'save file'}, -- set a single command and text
+    w = {':w<CR>', 'save file'}, -- set a single command and text
     q = {':q<CR>', "quit"},
     c = {":CommentToggle <CR>", "comment"},
-    }
+    A = {"<cmd>lua vim.lsp.buf.range_code_action()<CR>", "selected Action"},
+    m = {"<cmd>lua vim.lsp.buf.range_formatting<CR>", "selected format"},
+}
 
 M.leadern = {
-    w = {':w!<CR>', 'save file'}, -- set a single command and text
+    w = {':w<CR>', 'save file'}, -- set a single command and text
     q = {':q<CR>', "quit"},
+    Q = {':q!<CR>', "quit"},
     c = {":CommentToggle <CR>", "comment"},
     u = {
         name = "+utils",
         v = {"<Cmd>rightbelow vsp $MYVIMRC<CR>", "vim config"},
-        f = {"<Cmd>Lspsaga open_floaterm<CR>", "terminal float"},
-        F = {"<Cmd>Lspsaga close_floaterm<CR>", "close floatterminal"},
-        y = {"<Cmd>lua termV:toggle() <CR>", "terminal(vertical)"},
-        t = {"<Cmd>lua termH:toggle() <CR>", "terminal(bottom)"},
-        w = {"<Cmd>lua termW:toggle()<CR>", "toggle terminal(windows)"},
         n = {"<Cmd>Neoformat<CR>", "neoformat"},
-        d = {"<Cmd>ToggleTerm <CR>", "close floatterminal"},
         z = {
             name = 'zen',
             f = {'<cmd>TZAtaraxis<CR>', "ataraxisMode"},
@@ -77,13 +60,12 @@ M.leadern = {
  },
     f = { -- set a nested structure
         name = '+Find',
-	a = {"<Cmd>lua require('aerial').toggle()<CR>", 'symbol'},
+	    a = {"<Cmd>AerialToggle!<CR>", 'symbol'},
         f = {"<Cmd>Telescope find_files<CR>", "files"},
         b = {"<Cmd>Telescope buffers<CR>", "buffers"},
         h = {"<Cmd>Telescope help_tags<CR>", "help tags"},
         o = {"<Cmd>Telescope oldfiles<CR>", "old files"},
-        d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
-        D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
+        d = {"<cmd>Telescope diagnostics<cr>", "Document Diagnostics"},
         m = {"<cmd>Telescope marks<cr>", "Marks"},
         M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
         R = {"<cmd>Telescope registers<cr>", "Registers"},
@@ -97,7 +79,6 @@ M.leadern = {
                 name = "+C",
                 s = {"<Cmd>Telescope colorscheme<CR>", "colorscheme"},
                 h = {"<Cmd>Telescope command_history<CR>", "command history"},
-		c = {"<Cmd>Cheatsheet<CR>", "Cheatsheet"},
             },
         g = {
             name = '+git',
@@ -121,24 +102,15 @@ M.leadern = {
         h = {"<Cmd>BufferLineMovePrev<CR>", "move previous"},
         l = {"<Cmd>BufferLineMoveNext<CR>", "move next"},
         d = {"<Cmd>bdelete<CR>", "delete"},
-	x = {"<Cmd>BufOnly<CR>", "delete All"}
+	    x = {"<Cmd>BufOnly<CR>", "delete All"}
         },
     t = {
         name = "+tree",
         t = {"<Cmd>NvimTreeToggle<CR>", "toggle"},
         r = {"<Cmd>NvimTreeRefresh<CR>", "refresh"},
         f = {"<Cmd>NvimTreeFindFile<CR>", "find file(locate)"},
-        -- s = {"<Cmd>SymbolsOutline<CR>", "symbol"},
+	    a = {"<Cmd>AerialToggle!<CR>", 'symbol'},
         },
-    d = {
-        name = "+Debug",
-        b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
-        c = {"<cmd>DebugContinue<cr>", "Continue"},
-        i = {"<cmd>DebugStepInto<cr>", "Step Into"},
-        o = {"<cmd>DebugStepOver<cr>", "Step Over"},
-        r = {"<cmd>DebugToggleRepl<cr>", "Toggle Repl"},
-        s = {"<cmd>DebugStart<cr>", "Start"}
-    },
     d = {
         name = "+Debug",
         b = {"<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint(F7)"},
@@ -156,16 +128,16 @@ M.leadern = {
     },
     a = {
         name = "+lsp",
-        f = {"<Cmd>Lspsaga lsp_finder<CR>", "LSP finder"},
+        f = {"<Cmd>lua vim.diagnostic.open_float()<CR>", "LSP finder"},
         m = {"<Cmd>Neoformat<CR>", "Neoformat"},
-        h = {"<Cmd>Lspsaga hover_doc<CR>", "hover document"},
-        r = {"<Cmd>Lspsaga rename<CR>", "rename"},
-        j = {"<Cmd>Lspsaga diagnostic_jump_next<CR>", "diagnostic jump next"},
-        k = {"<Cmd>Lspsaga diagnostic_jump_prev<CR>", "diagnostic jump prev"},
-        s = {"<Cmd>Lspsaga signature_help<CR>", "signature_help"},
-        a = {"<Cmd>Lspsaga code_action<CR>", "code action"},
-        A = {"<cmd>Lspsaga range_code_action<cr>", "Selected Action"},
-        d = {"<Cmd>Lspsaga preview_definition<CR>", "preview definition"},
+        h = {"<Cmd>lua vim.lsp.buf.hover()<CR>", "hover document"},
+        r = {"<Cmd>lua vim.lsp.buf.rename()<CR>", "rename"},
+        R = {"<Cmd>lua require('refactoring').select_refactor()<CR>", "refactor"},
+        j = {"<Cmd>lua vim.diagnostic.goto_next()<CR>", "diagnostic jump next"},
+        k = {"<Cmd>lua vim.diagnostic.goto_prev()<CR>", "diagnostic jump prev"},
+        s = {"<Cmd>lua vim.lsp.buf.signature_help()<CR>", "signature_help"},
+        a = {"<Cmd>lua vim.lsp.buf.code_action()<CR>", "code action"},
+        d = {"<Cmd>lua vim.lsp.buf.definition()<CR>", "preview definition"},
         t = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "type definition"},
         g = {
                 name = "+go",

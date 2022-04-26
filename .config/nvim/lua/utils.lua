@@ -4,7 +4,7 @@ M.hide_statusline = function()
    local hidden = {"NvimTree", "terminal", "dashboard"}
    local shown = {}
    local api = vim.api
-   local buftype = api.nvim_buf_get_option("%", "ft")
+   local buftype = api.nvim_buf_get_option(0, "ft")
 
    -- shown table from config has the highest priority
    if vim.tbl_contains(shown, buftype) then
@@ -15,9 +15,9 @@ M.hide_statusline = function()
    if vim.tbl_contains(hidden, buftype) then
       api.nvim_set_option("laststatus", 0)
       return
-   else
-      api.nvim_set_option("laststatus", 2)
    end
+   
+   api.nvim_set_option("laststatus", 2)
 end
 
 M.t = function(str)
