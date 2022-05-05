@@ -137,7 +137,7 @@
     ]
   },
   "lr{": {
-    "prefix": "lr{",
+    "prefix": "lr{}",
     "description": "left\\{ right\\}",
     "body": [
       "\\left\\{ ${1:${TM_SELECTED_TEXT}} \\right\\} $0"
@@ -151,7 +151,7 @@
     ]
   },
   "lr[": {
-    "prefix": "lr[",
+    "prefix": "lr[]",
     "description": "left[ right]",
     "body": [
       "\\left[ ${1:${TM_SELECTED_TEXT}} \\right] $0"
@@ -670,7 +670,7 @@
       "prefix": "fx",
       "description": "f(x)",
       "body": [
-              "f\\left( ${1:x} \\right) $0"
+              "${1:f}\\left( ${2:x} \\right) $0"
           ]
   }
 }
