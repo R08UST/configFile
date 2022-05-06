@@ -89,10 +89,10 @@ M.leadern = {
             },
         S = {
             name = '+spectre',
-            s = {"<Cmd>Spectre open<CR>", 'open spectre'},
-            w = {"<Cmd>Spectre open_visual<CR>", 'search world'},
-            v = {"<Cmd>Spectre open_visual<CR>", 'search selected'},
-            f = {"<Cmd>Spectre open_file_search<cr>", 'search current file'},
+            s = {"<Cmd>lua require('spectre').open()<CR>", 'open spectre'},
+            w = {"<Cmd>lua require('spectre').open_visual({select_word=true})<CR>", 'search world'},
+            v = {"<Cmd>lua require('spectre').open_visual()<CR>", 'search selected'},
+            f = {"<Cmd>lua require('spectre').open_file_search()", 'search current file'},
             },
 	},
     b = {

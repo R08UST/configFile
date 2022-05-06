@@ -289,8 +289,8 @@ M.load = function()
 
     	use {
     	    "glepnir/dashboard-nvim",
-        	    config = function()
-    		require "plugins.configs.dashboard"
+        	config = function()
+    		    require "plugins.configs.dashboard"
     	    end,
     	}
 
@@ -311,16 +311,18 @@ M.load = function()
             ft = {'csv', 'tsv'}
 	    }
         use {
-	    'dstein64/vim-startuptime',
+	        'dstein64/vim-startuptime',
             cmd = "StartupTime"
         }
 
         use {
-	    'windwp/nvim-spectre',
-            cmd = "Spectre"
+	        'windwp/nvim-spectre',
+    	    setup = function()
+        		require("utils").packer_lazy_load "nvim-spectre"
+    	    end,
         }
         use {
-	    'sindrets/diffview.nvim',
+	        'sindrets/diffview.nvim',
             cmd = "DiffviewOpen"
         }
 
@@ -402,9 +404,9 @@ M.load = function()
     	}
 
         use {
-	    'mfussenegger/nvim-dap',
-	    opt = true,
-	    ft = {'python','py'},
+	        'mfussenegger/nvim-dap',
+	        opt = true,
+	        ft = {'python','py', 'c', 'cc'},
         }
 
         use {
