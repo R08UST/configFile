@@ -75,8 +75,7 @@ M.load = function()
     	}
 
     	use {
-    	    "famiu/feline.nvim",
-    	    after = "nvim-web-devicons",
+    	    "feline-nvim/feline.nvim",
     	    config = function()
     		    require "plugins.configs.statusline"
     	    end,
@@ -98,7 +97,7 @@ M.load = function()
 
         use {
     	    "lukas-reineke/indent-blankline.nvim",
-    	    event = "BufRead",
+    	    event = "VimEnter",
     	    config = function()
         		require("plugins.configs.others").blankline()
     	    end,
@@ -289,6 +288,7 @@ M.load = function()
 
     	use {
     	    "glepnir/dashboard-nvim",
+            after = 'indent-blankline.nvim', -- make sure exclude filetype in indent work
         	config = function()
     		    require "plugins.configs.dashboard"
     	    end,
