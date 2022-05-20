@@ -5,34 +5,35 @@ M.load = function()
     o.packpath = vim.fn.stdpath('config')
     o.runtimepath = vim.fn.stdpath('config') .. '/pack/packer' .. ',' .. o.runtimepath
 
-    vim.cmd "packadd packer.nvim"
-    local present, packer = pcall(require, "packer")
-
-    -- install packer
-    if not present then
 	local installpath =  o.packpath .. "/pack/packer/opt/packer.nvim"
 
-	print "Cloning packer.."
-	-- remove the dir before cloning
-	vim.fn.delete(installpath, "rf")
-	vim.fn.system {
-	    "git",
-	    "clone",
-	    "https://github.com/wbthomason/packer.nvim",
-	    "--depth",
-	    "20",
-	    installpath,
-	}
+    -- install packer
+    if vim.fn.empty(vim.fn.glob(installpath)) > 0 then
 
-	vim.cmd "packadd packer.nvim"
-	present, packer = pcall(require, "packer")
+	    print "Cloning packer.."
+	    -- remove the dir before cloning
+	    vim.fn.delete(installpath, "rf")
+	    vim.fn.system {
+	        "git",
+    	    "clone",
+	        "https://github.com/wbthomason/packer.nvim",
+	        "--depth",
+    	    "20",
+	        installpath,
+	    }
 
-	if present then
-	    print "Packer installed."
-	else
-	    error("Couldn't install packer !\nPacker path: " .. installpath .. "\n" .. packer)
-	end
+    	vim.cmd "packadd packer.nvim"
+	    present, packer = pcall(require, "packer")
+
+    	if present then
+    	    print "Packer installed."
+    	else
+    	    error("Couldn't install packer !\nPacker path: " .. installpath .. "\n" .. packer)
+    	end
     end
+
+    vim.cmd "packadd packer.nvim"
+    local present, packer = pcall(require, "packer")
 
     packer.startup{function()
 	    use "nvim-lua/plenary.nvim"
