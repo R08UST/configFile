@@ -33,7 +33,7 @@
     "body": [
       "\\[",
       "${1:${TM_SELECTED_TEXT}}",
-      ".\\] $0"
+      ".\\]$0"
     ]
   },
   "ali": {
@@ -91,7 +91,7 @@
     "prefix": "ceil",
     "description": "ceil",
     "body": [
-      "\\left\\lceil $1 \\right\\rceil $0"
+      "\\left\\lceil $1 \\right\\rceil$0"
     ]
   },
   "floor": {
@@ -105,56 +105,63 @@
     "prefix": "pmat",
     "description": "pmat",
     "body": [
-      "\\begin{pmatrix} $1 \\end{pmatrix} $0"
+      "\\begin{pmatrix} $1 \\end{pmatrix}$0"
     ]
   },
   "bmat": {
     "prefix": "bmat",
     "description": "bmat",
     "body": [
-      "\\begin{bmatrix} $1 \\end{bmatrix} $0"
+      "\\begin{bmatrix} $1 \\end{bmatrix}$0"
+    ]
+  },
+  "vmat": {
+    "prefix": "vmat",
+    "description": "vmat",
+    "body": [
+      "\\begin{vmatrix} $1 \\end{vmatrix}$0"
     ]
   },
   "()": {
     "prefix": "()",
     "description": "left( right)",
     "body": [
-      "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
+      "\\left( ${1:${TM_SELECTED_TEXT}} \\right)$0"
     ]
   },
   "lr": {
     "prefix": ["lr", "lr()"],
     "description": "left( right)",
     "body": [
-      "\\left( ${1:${TM_SELECTED_TEXT}} \\right) $0"
+      "\\left( ${1:${TM_SELECTED_TEXT}} \\right)$0"
     ]
   },
   "lr|": {
     "prefix": "lr|",
     "description": "left| right|",
     "body": [
-      "\\left| ${1:${TM_SELECTED_TEXT}} \\right| $0"
+      "\\left| ${1:${TM_SELECTED_TEXT}} \\right|$0"
     ]
   },
   "lr{": {
     "prefix": "lr{}",
     "description": "left\\{ right\\}",
     "body": [
-      "\\left\\{ ${1:${TM_SELECTED_TEXT}} \\right\\} $0"
+      "\\left\\{ ${1:${TM_SELECTED_TEXT}} \\right\\}$0"
     ]
   },
   "lrb": {
     "prefix": "lrb",
     "description": "left\\{ right\\}",
     "body": [
-      "\\left\\\\{ ${1:${TM_SELECTED_TEXT}} \\right\\\\} $0"
+      "\\left\\\\{ ${1:${TM_SELECTED_TEXT}} \\right\\\\}$0"
     ]
   },
   "lr[": {
     "prefix": "lr[]",
     "description": "left[ right]",
     "body": [
-      "\\left[ ${1:${TM_SELECTED_TEXT}} \\right] $0"
+      "\\left[ ${1:${TM_SELECTED_TEXT}} \\right]$0"
     ]
   },
   "lra": {
@@ -182,42 +189,42 @@
     "prefix": "taylor",
     "description": "taylor",
     "body": [
-      "\\sum_{${1:k}=${2:0}}^{${3:\\infty}} ${4:c_$1} (x-a)^$1 $0"
+      "\\sum_{${1:k}=${2:0}}^{${3:\\infty}} ${4:c_$1} (x-a)^$1$0"
     ]
   },
   "lim": {
     "prefix": "lim",
     "description": "limit",
     "body": [
-      "\\lim_{${1:n} \\to ${2:\\infty}} "
+      "\\lim_{${1:n} \\to ${2:\\infty}}"
     ]
   },
   "limsup": {
     "prefix": "limsup",
     "description": "limsup",
     "body": [
-      "\\limsup_{${1:n} \\to ${2:\\infty}} "
+      "\\limsup_{${1:n} \\to ${2:\\infty}}"
     ]
   },
   "prod": {
     "prefix": "prod",
     "description": "product",
     "body": [
-      "\\prod_{${1:n=${2:1}}}^{${3:\\infty}} ${4:${TM_SELECTED_TEXT}} $0"
+      "\\prod_{${1:n=${2:1}}}^{${3:\\infty}} ${4:${TM_SELECTED_TEXT}}$0"
     ]
   },
   "part": {
     "prefix": "part",
     "description": "d/dx",
     "body": [
-      "\\frac{\\partial ${1:V}}{\\partial ${2:x}} $0"
+      "\\frac{\\partial ${1:V}}{\\partial ${2:x}}$0"
     ]
   },
   "sq": {
     "prefix": "sq",
     "description": "\\sqrt{}",
     "body": [
-      "\\sqrt{${1:${TM_SELECTED_TEXT}}} $0"
+      "\\sqrt{${1:${TM_SELECTED_TEXT}}}$0"
     ]
   },
   "sr": {
@@ -406,7 +413,7 @@
     "prefix": "dint",
     "description": "integral",
     "body": [
-      "\\int_{${1:-\\infty}}^{${2:\\infty}} ${3:${TM_SELECTED_TEXT}} $0"
+      "\\int_{${1:-\\infty}}^{${2:\\infty}} ${3:${TM_SELECTED_TEXT}}$0"
     ]
   },
   "->": {
@@ -476,7 +483,7 @@
     "prefix": "set",
     "description": "set",
     "body": [
-      "\\{$1\\} $0"
+      "\\{$1\\}$0"
     ]
   },
   "||": {
@@ -532,14 +539,14 @@
     "prefix": "uuu",
     "description": "bigcup",
     "body": [
-      "\\bigcup_{${1:i \\in ${2: I}}} $0"
+      "\\bigcup_{${1:i \\in ${2: I}}}$0"
     ]
   },
   "nnn": {
     "prefix": "nnn",
     "description": "bigcap",
     "body": [
-      "\\bigcap_{${1:i \\in ${2: I}}} $0"
+      "\\bigcap_{${1:i \\in ${2: I}}}$0"
     ]
   },
   "OO": {
@@ -588,7 +595,7 @@
     "prefix": "'(?<!i)sts'",
     "description": "text subscript",
     "body": [
-      "_\\text{$1} $0"
+      "_\\text{$1}$0"
     ]
   },
   "tt": {
@@ -670,7 +677,7 @@
       "prefix": "fx",
       "description": "f(x)",
       "body": [
-              "${1:f}\\left( ${2:x} \\right) $0"
+              "${1:f}\\left( ${2:x} \\right)$0"
           ]
   }
 }
