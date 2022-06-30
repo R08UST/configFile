@@ -54,19 +54,19 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 -- local servers = lsp_installer.get_installed_servers()
-
-local servers = {'pyright', 'zk', 'bashls'}
+lsp_installer.setup {}
+local servers = {'pyright', 'bashls', 'marksman'}
 for _, name in pairs(servers) do
     local server_is_found, server = lsp_installer.get_server(name)
     if server_is_found and not server:is_installed() then
-	vim.notify("Installing " .. name)
-	server:install()
+	    vim.notify("Installing " .. name)
+	    server:install()
     end
     if server:is_installed() then
 	require('lspconfig')[name].setup {
 	    on_attach = onAttach,
 	    root_dir = function()
-		return vim.fn.getcwd()
+		    return vim.fn.getcwd()
 	    end,
 	    flags = {
 	    -- This will be the default in neovim 0.7+

@@ -10,5 +10,7 @@ nulls.setup({
         nulls.builtins.completion.spell,
         nulls.builtins.code_actions.gitsigns,
         nulls.builtins.code_actions.refactoring,
+        nulls.builtins.diagnostics.flake8,
+        nulls.builtins.formatting.autopep8,
     },
 })
