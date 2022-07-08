@@ -39,6 +39,7 @@ M.leaderv = {
     c = {":CommentToggle <CR>", "comment"},
     A = {"<cmd>lua vim.lsp.buf.range_code_action()<CR>", "selected Action"},
     m = {"<cmd>lua vim.lsp.buf.range_formatting<CR>", "selected format"},
+    v = {"<Cmd>lua require('spectre').open_visual()<CR>", 'spectre selected'},
 }
 
 M.leadern = {
@@ -71,7 +72,9 @@ M.leadern = {
         R = {"<cmd>Telescope registers<cr>", "Registers"},
         t = {"<cmd>Telescope live_grep<cr>", "Text"},
         q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
-        s = {"<cmd>Telescope symbol<cr>", "Quickfix"},
+        y = {"<cmd>Telescope symbol<cr>", "Quickfix"},
+        s = {"<Cmd>lua require('spectre').open()<CR>", 'open spectre'},
+        w = {"<Cmd>lua require('spectre').open_visual({select_word=true})<CR>", 'spectre word'},
         B = {"<cmd>Telescope bibtex<cr>", "Quickfix"},
         x = {"<cmd>cclose<cr>", "Close Quickfix"},
         n = {"<cmd>DashboardNewFile<CR>", "new file"},
@@ -79,6 +82,7 @@ M.leadern = {
                 name = "+C",
                 s = {"<Cmd>Telescope colorscheme<CR>", "colorscheme"},
                 h = {"<Cmd>Telescope command_history<CR>", "command history"},
+                f = {"<Cmd>lua require('spectre').open_file_search()<CR>", 'spectre current file'},
             },
         g = {
             name = '+git',
@@ -86,13 +90,6 @@ M.leadern = {
             c = {'<Cmd>Telescope git_bcommits<CR>', 'buffer commits'},
             b = {'<Cmd>Telescope git_branches<CR>', 'branches'},
             s = {'<Cmd>Telescope git_status<CR>', 'status'},
-            },
-        S = {
-            name = '+spectre',
-            s = {"<Cmd>lua require('spectre').open()<CR>", 'open spectre'},
-            w = {"<Cmd>lua require('spectre').open_visual({select_word=true})<CR>", 'search world'},
-            v = {"<Cmd>lua require('spectre').open_visual()<CR>", 'search selected'},
-            f = {"<Cmd>lua require('spectre').open_file_search()", 'search current file'},
             },
 	},
     b = {
