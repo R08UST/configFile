@@ -339,8 +339,12 @@ M.load = function()
 	        'iamcco/markdown-preview.nvim',
             run = 'cd app && yarn install',
 	        config = function()
-		        vim.g.mkdp_browser = 'msedge.exe'
+		        vim.g.mkdp_browser = 'microsoft-edge'
 	        end,
+        }
+        use {
+	        'dkarter/bullets.vim',
+            ft = {'md', 'markdown'}
         }
         -- Thesaurus
         use {

@@ -147,7 +147,7 @@
     "prefix": "lr{}",
     "description": "left\\{ right\\}",
     "body": [
-      "\\left\\{ ${1:${TM_SELECTED_TEXT}} \\right\\}$0"
+      "\\left\\{ ${1:${TM_SELECTED_TEXT}} \\right\\\\}$0"
     ]
   },
   "lrb": {
