@@ -30,6 +30,15 @@ M.key = function()
     map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+    vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+    vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+    vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+    -- moving between splits
+    vim.keymap.set('n', '<C-A-h>', require('smart-splits').move_cursor_left)
+    vim.keymap.set('n', '<C-A-j>', require('smart-splits').move_cursor_down)
+    vim.keymap.set('n', '<C-A-k>', require('smart-splits').move_cursor_up)
+    vim.keymap.set('n', '<C-A-l>', require('smart-splits').move_cursor_right)
 end
 -- whichkey leader
 M.leaderv = {
@@ -56,9 +65,14 @@ M.leadern = {
             f = {'<cmd>TZAtaraxis<CR>', "ataraxisMode"},
             m = {'<cmd>TZMinimalist<CR>', "minimalisticMode"},
             z = {'<cmd>TZFocus<CR>', "focusMode"},
-        }
-
- },
+        },
+        t = {
+            name = 'term',
+            f = {"<cmd>ToggleTerm direction=float<cr>", 'float term'},
+            t = {"<cmd>ToggleTerm size=10 direction=horizontal<cr>", 'horizon term'},
+            v = {"<cmd>ToggleTerm size=80 direction=vertical<cr>", 'vertical term'},
+        },
+    },
     f = { -- set a nested structure
         name = '+Find',
 	    a = {"<Cmd>AerialToggle!<CR>", 'symbol'},
@@ -120,8 +134,6 @@ M.leadern = {
         s = {"<cmd>lua require'dap'.continue()<cr>", "Start"},
 	    S = {"<cmd>lua require'dap'.session()<cr>", "Session"},
         l = {"<cmd>lua require'osv'.run_this()<cr>", "debug current lua file"}
-
-
     },
     a = {
         name = "+lsp",
@@ -152,56 +164,5 @@ M.leadern = {
             }
         }
     }
-
--- all plugins related mappings
--- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
-M.plugin = {
-   bufferline = {
-      next_buffer = "<TAB>", -- next buffer
-      prev_buffer = "<S-Tab>", -- previous buffer
-   },
-   comment = {
-      toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix
-   },
-   dashboard = {
-      open = "<leader>db", -- open dashboard
-      session_load = "<leader>l", -- load a saved session
-      session_save = "<leader>s", -- save a session
-   },
-   -- note: this is an edditional mapping to escape, escape key will still work
-   better_escape = {
-      esc_insertmode = { "jk" }, -- multiple mappings allowed
-   },
-   nvimtree = {
-      toggle = "<C-n>", -- file manager
-   },
-   neoformat = {
-      format = "<leader>fm",
-   },
-   telescope = {
-      buffers = "<leader>fb",
-      find_files = "<leader>ff",
-      git_commits = "<leader>cm",
-      git_status = "<leader>gt",
-      help_tags = "<leader>fh",
-      live_grep = "<leader>fw",
-      oldfiles = "<leader>fo",
-      themes = "<leader>th",
-   },
-   telescope_media = {
-      media_files = "<leader>fp",
-   },
-   truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
-      ataraxis_mode = "<leader>zz", -- center
-      focus_mode = "<leader>zf",
-      minimalistic_mode = "<leader>zm", -- as it is
-   },
-   vim_fugitive = {
-      diff_get_2 = "<leader>gh",
-      diff_get_3 = "<leader>gl",
-      git = "<leader>gs",
-      git_blame = "<leader>gb",
-   },
-}
 
 return M

@@ -252,6 +252,17 @@ M.load = function()
         }
 
        -- misc plugins
+        use {"akinsho/toggleterm.nvim",
+            config = function()
+                require("plugins.configs.others").toggleterm()
+            end}
+
+        use {'mrjones2014/smart-splits.nvim',
+            config = function()
+                require("plugins.configs.others").smartsplit()
+            end
+            }
+
     	use {
     	    "rafcamlet/nvim-luapad",
     	    cmd = {'Luapad', 'LuaRun'}
@@ -343,8 +354,11 @@ M.load = function()
 	        end,
         }
         use {
-	        'dkarter/bullets.vim',
-            ft = {'md', 'markdown'}
+            'gaoDean/autolist.nvim',
+            ft = {'markdown', 'md'},
+            config = function()
+                require('autolist').setup()
+            end,
         }
         -- Thesaurus
         use {

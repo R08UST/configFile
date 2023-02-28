@@ -11,12 +11,12 @@ local function onAttach(client, bufnr)
     end
     -- attach aerial and signature
     require("aerial").on_attach(client, bufnr)
-    require("lsp_signature").on_attach()
+    require("lsp_signature").on_attach(client, bufnr)
 
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
