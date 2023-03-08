@@ -34,7 +34,8 @@ o.swapfile = false
 o.backup = false
 o.writebackup = false
 g.did_load_filetypes = 1
-
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 require("mappings").key()
 
 -- colorscheme/theme

@@ -5,18 +5,39 @@ if not (present1 or present2) then
    return
 end
 
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            -- apply whatever logic you want (in this example, we'll only use null-ls)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
+end
+
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local function onAttach(client, bufnr)
     local function buf_set_option(...)
 	vim.api.nvim_buf_set_option(bufnr, ...)
     end
     -- attach aerial and signature
-    require("aerial").on_attach(client, bufnr)
     require("lsp_signature").on_attach(client, bufnr)
 
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
+
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                lsp_formatting(bufnr)
+            end,
+        })
+    end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

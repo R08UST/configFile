@@ -4,75 +4,106 @@ if not present then
    return
 end
 
-local g = vim.g
+nvimtree.setup({
+  create_in_closed_folder = true,
+  hijack_cursor = true,
+  open_on_setup = true,
+  open_on_setup_file = true,
+  focus_empty_on_setup = true,
+  sync_root_with_cwd = true,
+  view = {
+    adaptive_size = false,
+    mappings = {
+      list = {
+        { key = { "<2-RightMouse>", "<C-]>" }, action = "" }, -- cd
+        { key = "<C-v>", action = "" }, -- vsplit
+        { key = "<C-x>", action = "" }, -- split
+        { key = "<C-t>", action = "" }, -- tabnew
+        { key = "<BS>", action = "" }, -- close_node
+        { key = "<Tab>", action = "" }, -- preview
+        { key = "D", action = "" }, -- trash
+        { key = "[e", action = "" }, -- prev_diag_item
+        { key = "]e", action = "" }, -- next_diag_item
+        { key = "[c", action = "" }, -- prev_git_item
+        { key = "]c", action = "" }, -- next_git_item
+        { key = "-", action = "" }, -- dir_up
+        { key = "s", action = "" }, -- system_open
+        { key = "W", action = "" }, -- collapse_all
+        { key = "g?", action = "" }, -- toggle_help
 
-vim.o.termguicolors = true
+        { key = "d", action = "cd" }, -- remove
+        { key = "x", action = "remove" }, -- cut
 
-g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-g.nvim_tree_gitignore = 0
-g.nvim_tree_hide_dotfiles = 0
-g.nvim_tree_highlight_opened_files = 0
-g.nvim_tree_indent_markers = 1
-g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
-g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
-g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
---
-g.nvim_tree_show_icons = {
-   folders = 1,
-   -- folder_arrows= 1
-   files = 1,
-   git = 1,
-}
-
-g.nvim_tree_icons = {
-   default = "",
-   symlink = "",
-   git = {
-      deleted = "",
-      ignored = "◌",
-      renamed = "➜",
-      staged = "✓",
-      unmerged = "",
-      unstaged = "✗",
-      untracked = "★",
-   },
-   folder = {
-      -- disable indent_markers option to get arrows working or if you want both arrows and indent then just add the arrow icons in front            ofthe default and opened folders below!
-      -- arrow_open = "",
-      -- arrow_closed = "",
-      default = "",
-      empty = "", -- 
-      empty_open = "",
-      open = "",
-      symlink = "",
-      symlink_open = "",
-   },
-}
-
-nvimtree.setup {
-   diagnostics = {
-      enable = false,
-      icons = {
-         hint = "",
-         info = "",
-         warning = "",
-         error = "",
+        { key = "t", action = "cut" },
+        { key = "<Space>p", action = "prev_diag_item" },
+        { key = "<Space>.", action = "next_diag_item" },
+        { key = "<Space>k", action = "prev_git_item" },
+        { key = "<Space>j", action = "next_git_item" },
+        { key = "u", action = "dir_up" },
+        { key = "'", action = "close_node" },
+        { key = '"', action = "collapse_all" },
+        { key = "?", action = "toggle_help" },
       },
-   },
-   disable_netrw = true,
-   hijack_netrw = true,
-   ignore_ft_on_setup = { "dashboard" },
-   auto_close = false,
-   open_on_tab = false,
-   hijack_cursor = true,
-   update_cwd = true,
-   update_focused_file = {
+    },
+  },
+  renderer = {
+    full_name = true,
+    group_empty = true,
+    special_files = {},
+    symlink_destination = false,
+    indent_markers = {
       enable = true,
-      update_cwd = false,
-   },
-   view = {
-      allow_resize = true,
-      side = "left",
-      width = 25,
-   },
-}
+    },
+    icons = {
+      git_placement = "signcolumn",
+      show = {
+        file = true,
+        folder = false,
+        folder_arrow = false,
+        git = true,
+      },
+    },
+  },
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+    ignore_list = { "help" },
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+  },
+  filters = {
+    custom = {
+      "^.git$",
+    },
+  },
+  actions = {
+    change_dir = {
+      enable = false,
+      restrict_above_cwd = true,
+    },
+    open_file = {
+      resize_window = true,
+      window_picker = {
+        chars = "aoeui",
+      },
+    },
+    remove_file = {
+      close_window = false,
+    },
+  },
+  log = {
+    enable = false,
+    truncate = true,
+    types = {
+      all = false,
+      config = false,
+      copy_paste = false,
+      diagnostics = false,
+      git = false,
+      profile = false,
+      watcher = false,
+    },
+  },
+})
