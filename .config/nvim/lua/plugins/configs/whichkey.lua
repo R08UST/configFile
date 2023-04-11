@@ -1,9 +1,9 @@
 local present, whichkey = pcall(require, "which-key")
 if not present then
-   return
+    return
 end
 
-mapping = require('mappings')
+mapping = require("mappings")
 
 whichkey.setup {
     plugins = {
@@ -41,5 +41,5 @@ whichkey.setup {
     show_help = true -- show help message on the command line when the popup is visible
 }
 
-whichkey.register(mapping.leaderv, {mode = 'v', prefix = '<leader>'})
-whichkey.register(mapping.leadern, {mode = 'n', prefix = '<leader>'})
+whichkey.register(mapping.leaderv, {mode = "v", prefix = "<leader>"})
+whichkey.register(mapping.leadern, {mode = "n", prefix = "<leader>"})

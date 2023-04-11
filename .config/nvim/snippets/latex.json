@@ -1,0 +1,11 @@
+{
+    "frame block": {
+        "prefix": "frame",
+        "description": "frame block",
+        "body": [
+	        "\\begin{frame}{$1}",
+            "\t$2",
+            "\\end{frame}$0"
+        ]
+    }
+}

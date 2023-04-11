@@ -10,17 +10,17 @@ cmd "set nocompatible"
 local present, impatient = pcall(require, "impatient")
 
 if present then
-   impatient.enable_profile()
+    impatient.enable_profile()
 end
-require('plugins.init').load()
+require("plugins.init").load()
 
 -- edit setting
 
-cmd 'set tabstop=4'
-cmd 'set shiftwidth=4'
-cmd 'set softtabstop=4'
-cmd 'set expandtab'
-o.mouse= "a"
+cmd "set tabstop=4"
+cmd "set shiftwidth=4"
+cmd "set softtabstop=4"
+cmd "set expandtab"
+o.mouse = "a"
 o.splitbelow = true
 -- o.showtabline = 2
 o.showmode = false
@@ -39,8 +39,7 @@ g.loaded_netrwPlugin = 1
 require("mappings").key()
 
 -- colorscheme/theme
-cmd 'set termguicolors'
-require('themes')
+cmd "set termguicolors"
+require("themes")
 
 cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua require("utils").hide_statusline() ]]
-
