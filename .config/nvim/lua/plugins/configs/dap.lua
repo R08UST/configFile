@@ -33,11 +33,11 @@ M.vimkind = function()
                 local val = tonumber(vim.fn.input("Port: "))
                 assert(val, "Please provide a port number")
                 return val
-            end
-        }
+            end,
+        },
     }
     dap.adapters.nlua = function(callback, config)
-        callback({type = "server", host = config.host, port = config.port})
+        callback({ type = "server", host = config.host, port = config.port })
     end
 end
 
@@ -54,46 +54,44 @@ M.ui = function()
         ui.close()
     end
     -- if present and present1 then
-    ui.setup(
-        {
-            icons = {expanded = "▾", collapsed = "▸"},
-            mappings = {
-                -- Use a table to apply multiple mappings
-                expand = {"<CR>", "<2-LeftMouse>"},
-                open = "o",
-                remove = "d",
-                edit = "e",
-                repl = "r"
-            },
-            layouts = {
-                {
-                    elements = {
-                        "scopes",
-                        "breakpoints",
-                        "stacks",
-                        "watches"
-                    },
-                    size = 40,
-                    position = "left"
+    ui.setup({
+        icons = { expanded = "▾", collapsed = "▸" },
+        mappings = {
+            -- Use a table to apply multiple mappings
+            expand = { "<CR>", "<2-LeftMouse>" },
+            open = "o",
+            remove = "d",
+            edit = "e",
+            repl = "r",
+        },
+        layouts = {
+            {
+                elements = {
+                    "scopes",
+                    "breakpoints",
+                    "stacks",
+                    "watches",
                 },
-                {
-                    elements = {
-                        "repl",
-                        "console"
-                    },
-                    size = 10,
-                    position = "bottom"
-                }
+                size = 40,
+                position = "left",
             },
-            floating = {
-                max_height = nil, -- These can be integers or a float between 0 and 1.
-                max_width = nil, -- Floats will be treated as percentage of your screen.
-                mappings = {
-                    close = {"q", "<Esc>"}
-                }
+            {
+                elements = {
+                    "repl",
+                    "console",
+                },
+                size = 10,
+                position = "bottom",
             },
-            windows = {indent = 1}
-        }
-    )
+        },
+        floating = {
+            max_height = nil, -- These can be integers or a float between 0 and 1.
+            max_width = nil, -- Floats will be treated as percentage of your screen.
+            mappings = {
+                close = { "q", "<Esc>" },
+            },
+        },
+        windows = { indent = 1 },
+    })
 end
 return M

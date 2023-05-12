@@ -4,7 +4,7 @@ if not present then
 end
 
 ts_config.setup {
-    ensure_installed = {},
+    ensure_installed = {'lua', 'c', 'python', 'markdown', 'yaml', 'json', 'markdown_inline', 'query', 'regex', 'vim'},
     autopairs = {enable = true},
     matchup = {enable = true},
     rainbow = {

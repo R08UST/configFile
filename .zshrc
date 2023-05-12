@@ -1,5 +1,4 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="~/.oh-my-zsh"
@@ -104,6 +103,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python=python3
 alias pip=pip3
-alias nvim=~/nvim-linux64/bin/nvim
-alias vim=~/nvim-linux64/bin/nvim
-export PATH=$PATH:~/.local/share/nvim/lsp_servers/zk
+alias nvim=~/Software/nvim-linux64/bin/nvim
+alias vim=~/Software/nvim-linux64/bin/nvim

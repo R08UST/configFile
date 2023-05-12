@@ -22,31 +22,30 @@ end
 -- local conds = require("luasnip.extras.expand_conditions")
 local types = require("luasnip.util.types")
 
-luasnip.config.set_config(
-    {
-        history = true,
-        -- Update more often, :h events for more info.
-        updateevents = "TextChanged,TextChangedI",
-        ext_opts = {
-            [types.choiceNode] = {
-                active = {
-                    virt_text = {{"choiceNode", "Comment"}}
-                }
-            }
+luasnip.config.set_config({
+    history = true,
+    -- Update more often, :h events for more info.
+    updateevents = "TextChanged,TextChangedI",
+    delete_check_events = "TextChanged",
+    ext_opts = {
+        [types.choiceNode] = {
+            active = {
+                virt_text = { { "choiceNode", "Comment" } },
+            },
         },
-        -- treesitter-hl has 100, use something higher (default is 200).
-        ext_base_prio = 300,
-        -- minimal increase in priority.
-        ext_prio_increase = 1,
-        enable_autosnippets = true,
-        store_selection_keys = "<Tab>"
-    }
-)
-luasnip.filetype_set("cpp", {"c"})
-luasnip.filetype_extend("lua", {"c"})
-luasnip.filetype_extend("markdown", {"math"})
-luasnip.filetype_extend("tex", {"math"})
+    },
+    -- treesitter-hl has 100, use something higher (default is 200).
+    ext_base_prio = 300,
+    -- minimal increase in priority.
+    ext_prio_increase = 1,
+    enable_autosnippets = true,
+    store_selection_keys = "<Tab>",
+})
+luasnip.filetype_set("cpp", { "c" })
+luasnip.filetype_extend("lua", { "c" })
+luasnip.filetype_extend("markdown", { "math" })
+luasnip.filetype_extend("tex", { "math" })
 -- load friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load()
 -- load my own snippets
-require("luasnip.loaders.from_vscode").lazy_load({paths = {"./snippets"}})
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })

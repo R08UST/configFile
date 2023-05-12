@@ -1,10 +1,9 @@
 local M = {}
 
-local lush = require("lush")
-local hsl = lush.hsl
-
 M.jelly = function()
-    colors = {
+    local lush = require("lush")
+    local hsl = lush.hsl
+    local colors = {
         foreground = hsl("#e8e8d3"),
         background = hsl("#353535"),
         grey = hsl("#888888"),
@@ -52,23 +51,23 @@ M.jelly = function()
         purple = hsl("#700089"),
         tea_green = hsl("#d2ebbe"),
         dell = hsl("#437019"),
-        calypso = hsl("#2B5B77")
+        calypso = hsl("#2B5B77"),
     }
     return colors
 end
 
-M.get = function()
+M.text = function()
     local colors = {
         white = "#abb2bf",
         darker_black = "#1b1f27",
         black = "#1e222a", --  nvim bg
         black2 = "#252931",
-        one_bg = "#282c34", -- real bg of onedark
-        one_bg2 = "#353b45",
-        one_bg3 = "#30343c",
+        bg = "#282c34", -- real bg of onedark
+        bg2 = "#353b45",
+        bg3 = "#30343c",
         grey = "#42464e",
-        grey_fg = "#565c64",
-        grey_fg2 = "#6f737b",
+        fg = "#565c64",
+        fg2 = "#6f737b",
         light_grey = "#6f737b",
         red = "#d47d85",
         baby_pink = "#DE8C92",
@@ -89,7 +88,7 @@ M.get = function()
         lightbg = "#2d3139",
         lightbg2 = "#262a32",
         pmenu_bg = "#A3BE8C",
-        folder_bg = "#61afef"
+        folder_bg = "#61afef",
     }
     return colors
 end

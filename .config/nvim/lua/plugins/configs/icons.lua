@@ -3,124 +3,124 @@ if not present then
     return
 end
 
-local colors = require("colors").get()
+local colors = require("colors").text()
 
-icons.setup {
+icons.setup({
     override = {
         c = {
             icon = "",
             color = colors.blue,
-            name = "c"
+            name = "c",
         },
         css = {
             icon = "",
             color = colors.blue,
-            name = "css"
+            name = "css",
         },
         deb = {
             icon = "",
             color = colors.magenta,
-            name = "deb"
+            name = "deb",
         },
         Dockerfile = {
             icon = "",
             color = colors.cyan,
-            name = "Dockerfile"
+            name = "Dockerfile",
         },
         html = {
             icon = "",
             color = colors.redwine,
-            name = "html"
+            name = "html",
         },
         jpeg = {
             icon = "",
             color = colors.violet,
-            name = "jpeg"
+            name = "jpeg",
         },
         jpg = {
             icon = "",
             color = colors.violet,
-            name = "jpg"
+            name = "jpg",
         },
         js = {
             icon = "",
             color = colors.brown,
-            name = "js"
+            name = "js",
         },
         kt = {
             icon = "󱈙",
             color = colors.orange,
-            name = "kt"
+            name = "kt",
         },
         lock = {
             icon = "",
             color = colors.red,
-            name = "lock"
+            name = "lock",
         },
         lua = {
             icon = "",
             color = colors.blue,
-            name = "lua"
+            name = "lua",
         },
         mp3 = {
             icon = "",
             color = colors.grey,
-            name = "mp3"
+            name = "mp3",
         },
         mp4 = {
             icon = "",
             color = colors.grey,
-            name = "mp4"
+            name = "mp4",
         },
         out = {
             icon = "",
             color = colors.grey,
-            name = "out"
+            name = "out",
         },
         png = {
             icon = "",
             color = colors.violet,
-            name = "png"
+            name = "png",
         },
         py = {
             icon = "",
             color = colors.cyan,
-            name = "py"
+            name = "py",
         },
         toml = {
             icon = "",
             color = colors.blue,
-            name = "toml"
+            name = "toml",
         },
         ts = {
             icon = "ﯤ",
             color = colors.teal,
-            name = "ts"
+            name = "ts",
         },
         rb = {
             icon = "",
             color = colors.magenta,
-            name = "rb"
+            name = "rb",
         },
         rpm = {
             icon = "",
             color = colors.orange,
-            name = "rpm"
+            name = "rpm",
         },
         vue = {
             icon = "﵂",
             color = colors.green,
-            name = "vue"
+            name = "vue",
         },
         xz = {
             icon = "",
             color = colors.brown,
-            name = "xz"
+            name = "xz",
         },
         zip = {
             icon = "",
             color = colors.brown,
-            name = "zip"
-        }
-    }
-}
+            name = "zip",
+        },
+    },
+})
