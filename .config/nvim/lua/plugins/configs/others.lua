@@ -273,7 +273,15 @@ end
 
 M.autolist = function()
     local autolist = require("autolist")
-    autolist.setup()
+    local config = require("autolist.config")
+    autolist.setup({
+        checkbox = {
+            fill = "✓",
+            left = "%[",
+            right = "%]",
+        },
+    })
+    config.list_cap = 65535
     autolist.create_mapping_hook("i", "<CR>", autolist.new)
     autolist.create_mapping_hook("i", "<Tab>", autolist.indent)
     autolist.create_mapping_hook("i", "<S-Tab>", autolist.indent, "<C-D>")

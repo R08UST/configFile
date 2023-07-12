@@ -21,10 +21,7 @@ local function onAttach(client, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
-    -- attach aerial and signature
-    -- require("lsp_signature").on_attach(client, bufnr)
 
-    -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     if client.supports_method("textDocument/formatting") then
@@ -60,8 +57,8 @@ capabilities.textDocument.completion.completionItem = {
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
-        prefix = "",
-        spacing = 0,
+        prefix = "✪",
+        spacing = 1,
     },
     signs = true,
     underline = true,
@@ -102,13 +99,7 @@ local servers = {
             },
         },
     },
-    ltex = {
-        settings = {
-            ltex = {
-                language = "auto",
-            },
-        },
-    },
+    clangd = {},
 }
 
 local function setup(server)

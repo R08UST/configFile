@@ -111,7 +111,7 @@ ins_left({
 
 ins_left({
     -- filesize component
-    "filesize",
+    "filename",
     cond = conditions.buffer_not_empty,
 })
 

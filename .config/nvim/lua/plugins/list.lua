@@ -378,7 +378,7 @@ local M = {
     -- debug
     {
         "mfussenegger/nvim-dap",
-        ft = { "python", "py", "c", "cc" },
+        -- ft = { "python", "py", "c", "cc" },
         lazy = true,
         dependencies = {
             {
@@ -397,6 +397,9 @@ local M = {
                 end,
             },
         },
+        config = function()
+            require("plugins.configs.dap").gdb()
+        end,
     },
 }
 

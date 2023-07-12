@@ -11,7 +11,12 @@ require("gitsigns").setup({
         delete = { hl = "GitSignsDelete", text = "-", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
         topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
         changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-        untracked = { hl = "GitSignsUntracked", text = "│", numhl = "GitSignsUntrackedNr", linehl = "GitSignsUntrackedLn" },
+        untracked = {
+            hl = "GitSignsUntracked",
+            text = "│",
+            numhl = "GitSignsUntrackedNr",
+            linehl = "GitSignsUntrackedLn",
+        },
     },
     count_chars = {
         [1] = "",
@@ -27,11 +32,6 @@ require("gitsigns").setup({
     },
     numhl = false,
     linehl = false,
-    keymaps = {
-        -- Default keymap options
-        noremap = true,
-        buffer = true,
-    },
     watch_gitdir = {
         interval = 1000,
     },

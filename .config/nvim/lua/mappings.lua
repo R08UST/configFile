@@ -42,7 +42,6 @@ M.key = function()
 end
 -- whichkey leader
 M.leaderv = {
-    w = { ":w<CR>", "save file" }, -- set a single command and text
     q = { ":q<CR>", "quit" },
     c = { ":CommentToggle <CR>", "comment" },
     A = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "selected Action" },
@@ -85,11 +84,10 @@ M.leadern = {
         R = { "<cmd>Telescope registers<cr>", "Registers" },
         t = { "<cmd>Telescope live_grep<cr>", "Text" },
         q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
-        y = { "<cmd>Telescope symbol<cr>", "symbol" },
+        y = { "<cmd>Telescope symbols<cr>", "symbol" },
         s = { "<Cmd>lua require('spectre').open()<CR>", "open spectre" },
         w = { "<Cmd>lua require('spectre').open_visual({select_word=true})<CR>", "spectre word" },
         B = { "<cmd>Telescope bibtex<cr>", "Bibtex" },
-        n = { "<cmd>DashboardNewFile<CR>", "new file" },
         c = {
             name = "+C",
             s = { "<Cmd>Telescope colorscheme<CR>", "colorscheme" },
@@ -103,13 +101,13 @@ M.leadern = {
             b = { "<Cmd>Telescope git_branches<CR>", "branches" },
             s = { "<Cmd>Telescope git_status<CR>", "status" },
         },
-    x = {
-        name = "+quickfix",
-        x = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
-        X = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
-        l = { "<cmd>TroubleToggle loclist<cr>", "Location List (Trouble)" },
-        q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix List (Trouble)" },
-    },
+        x = {
+            name = "+quickfix",
+            x = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
+            X = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
+            l = { "<cmd>TroubleToggle loclist<cr>", "Location List (Trouble)" },
+            q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix List (Trouble)" },
+        },
     },
     b = {
         name = "+buffer",
@@ -142,7 +140,7 @@ M.leadern = {
     },
     a = {
         name = "+lsp",
-        f = { "<Cmd>lua vim.diagnostic.open_float()<CR>", "LSP finder" },
+        -- f = { "<Cmd>lua vim.diagnostic.open_float()<CR>", "LSP finder" },
         m = { "<Cmd>lua vim.lsp.buf.format()<CR>", "Neoformat" },
         h = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "hover document" },
         r = { "<Cmd>lua vim.lsp.buf.rename()<CR>", "rename" },
