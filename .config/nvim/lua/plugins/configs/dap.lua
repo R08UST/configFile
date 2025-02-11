@@ -53,7 +53,7 @@ M.ui = function()
     dap.listeners.before.event_exited["dapui_config"] = function()
         ui.close()
     end
-    -- if present and present1 then
+    if present and present1 then
     ui.setup({
         icons = { expanded = "▾", collapsed = "▸" },
         mappings = {
@@ -93,6 +93,7 @@ M.ui = function()
         },
         windows = { indent = 1 },
     })
+end
 end
 
 M.gdb = function()
