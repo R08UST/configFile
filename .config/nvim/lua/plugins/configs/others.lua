@@ -279,24 +279,29 @@ M.smartsplit = function()
 end
 
 M.autolist = function()
-    local autolist = require("autolist")
-    local config = require("autolist.config")
-    autolist.setup({
-        checkbox = {
-            fill = "✓",
-            left = "%[",
-            right = "%]",
-        },
-    })
-    config.list_cap = 65535
-    autolist.create_mapping_hook("i", "<CR>", autolist.new)
-    autolist.create_mapping_hook("i", "<Tab>", autolist.indent)
-    autolist.create_mapping_hook("i", "<S-Tab>", autolist.indent, "<C-D>")
-    autolist.create_mapping_hook("n", "o", autolist.new)
-    autolist.create_mapping_hook("n", "O", autolist.new_before)
-    autolist.create_mapping_hook("n", ">>", autolist.indent)
-    autolist.create_mapping_hook("n", "<<", autolist.indent)
-    autolist.create_mapping_hook("n", "<C-r>", autolist.force_recalculate)
-    autolist.create_mapping_hook("n", "<leader>x", autolist.invert_entry, "")
+-- 禁用默认键映射
+vim.g.bullets_set_mappings = 0
+vim.g.bullets_outline_levels = ['num']
+-- 自定义映射
+vim.g.bullets_custom_mappings = {
+    -- 插入模式
+    {'imap', '<cr>', '<Plug>(bullets-newline)'},
+    {'inoremap', '<C-cr>', '<cr>'},
+    
+    -- 普通模式
+    {'nmap', 'o', '<Plug>(bullets-newline)'},
+    {'nmap', '<leader>x', '<Plug>(bullets-toggle-checkbox)'},
+    {'nmap', '>>', '<Plug>(bullets-demote)'},
+    {'nmap', '<<', '<Plug>(bullets-promote)'},
+    
+    -- 可视模式
+    {'vmap', 'gN', '<Plug>(bullets-renumber)'},
+    {'vmap', '>', '<Plug>(bullets-demote)'},
+    {'vmap', '<', '<Plug>(bullets-promote)'},
+    
+    -- 插入模式快捷键
+    {'imap', '<c-d>', '<Plug>(bullets-demote)'},
+    {'imap', '<C-t>', '<Plug>(bullets-promote)'},
+}
 end
 return M

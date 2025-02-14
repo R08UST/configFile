@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,10 +68,9 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-	zsh-autosuggestions
-	autojump
-	zsh-syntax-highlighting
     extract
+    zoxide
+    command-not-found
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,5 +102,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias python=python3
 alias pip=pip3
-alias nvim=~/Software/nvim-linux64/bin/nvim
-alias vim=~/Software/nvim-linux64/bin/nvim
+alias nvim=$HOME/software/nvim-linux-x86_64/bin/nvim
+alias vim=$HOME/software/nvim-linux-x86_64/bin/nvim

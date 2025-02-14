@@ -116,3 +116,5 @@ if ! shopt -oq posix; then
   fi
 fi
 export DISPLAY=127.0.0.1:0.0
+export PATH="$PATH:$HOME/.local/bin/"
+

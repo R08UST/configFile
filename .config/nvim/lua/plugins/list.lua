@@ -307,7 +307,7 @@ local M = {
         end,
     },
     {
-        "gaoDean/autolist.nvim",
+        "bullets-vim/bullets.vim",
         cmd = "InsertEnter",
         ft = { "markdown", "md", "tex", "plaintex" },
         config = function()
